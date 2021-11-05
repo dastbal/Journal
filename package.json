@@ -1,0 +1,22 @@
+{
+  "name": "journal",
+  "version": "1.0.0",
+  "description": "team project  about a journal ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dastbal/Journal.git"
+  },
+  "keywords": [
+    "journal"
+  ],
+  "author": "David Balladares <davidxsteven@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dastbal/Journal/issues"
+  },
+  "homepage": "https://github.com/dastbal/Journal#readme"
+}
