@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const router = require('./routes')
+const routerJournal = require('./routes')
 
 // const session = require('express-session');
 // const csrf= require('csurf');
@@ -15,7 +15,7 @@ app.set('views','views');
 app.use(bodyParser.urlencoded({extended:false}));
 
 // 
-router(app);
+routerJournal(app)
 
 app.listen(port)
 
