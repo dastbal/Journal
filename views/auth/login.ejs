@@ -15,24 +15,25 @@
             </div>
         </div>
         
-        <form action="/login" method="POST">
+        <form action="/" method="POST">
             <div class="form-control">
                 <label for="email">E-Mail</label>
-                <!--<input 
+                <input 
                     type="email" 
                     name="email" 
                     id="email" 
-                    value="<%= oldInput.email %>">-->
+                    value="">
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
-                <!--<input 
+                    <input 
                     type="password" 
                     name="password" 
                     id="password" 
-                    value="<%= oldInput.password %>">-->
+                    value="" 
+                    >
             </div>
-            <!--<input type="hidden" name="_csrf" value="<%= csrfToken %>">-->
+            <input type="hidden" name="csrf" value="" >
             <div class="">
                 <a href="/reset">Forgot your login details?</a>
             </div>
