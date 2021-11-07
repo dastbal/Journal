@@ -1,0 +1,65 @@
+<%- include('../includes/head.ejs') %> 
+<link rel="stylesheet" href="/css/form.css">
+
+</head>
+<body>
+    
+    
+    <main>
+        <div class="text-logo">
+            <h1>journal</h1>
+            <span> remeber your experiences</span>
+            <div>
+                <hr/>
+                <span>O</span>
+                <hr/>
+            </div>
+        </div>
+        <!-- <% if (errorMessage) { %>
+            <p class="alertMessage"> <%= errorMessage %> </p>
+         
+        <% } %> -->
+        <form  class="form-control" action="/signup" method="POST">
+            <label for="userName">
+                Username
+
+                <input type="userName" required name="userName" id="userName" placeholder="David" >
+            </label>
+            
+            <label for="email">
+                E-mail
+
+                <input type="email" required name="email" id="email"  placeholder="kevin@Tello.com"   >
+            </label>
+            <label for="password">
+                Password
+                
+                <input type="password"  required name="password"  step="0.01" id="password">
+            </label>                    
+            <label for="confirmPassword">
+                Confirm Password
+                
+                <input type="password"  required name="confirmPassword"   id="confirmPassword" >
+            </label> 
+            <p>Genre </p>
+            <div>
+                <input type="radio" id="male" name="male" value="Male"
+                       checked>
+                <label for="male">Male</label>
+              </div>
+              
+              <div>
+                <input type="radio" id="female" name="female" value="Female">
+                <label for="female">Female</label>
+              </div>
+            <!-- <input type="hidden" value="<%= csrfToken %>" name="_csrf"> -->
+                   
+                    
+            <button class="btn" type="submit"> Sign Up </button>
+                
+                
+        </form>
+        <p class='centered' > You have an account? <a> Log In</a> </p>
+    </main>
+    
+    <%- include('../includes/end.ejs') %> 
