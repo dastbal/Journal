@@ -8,6 +8,7 @@ function routerJournal(app) {
   app.use(router);
   router.use('/', authRouter);
   //router.use('/users', usersRouter);
+  //router.use('/users', usersRouter);
 }
 
 module.exports = routerJournal;
