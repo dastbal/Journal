@@ -1,5 +1,0 @@
-PORT =  3000
-DB_USER   = david
-DB_PASSWORD = david123
-DB_NAME = journal
-
