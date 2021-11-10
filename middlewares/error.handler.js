@@ -4,10 +4,11 @@ function logErrors (err, req, res, next) {
   }
   
   function errorHandler(err, req, res, next) {
-
-  res.status(500).render('500',{
-    path: '/Page Not Found',
-    pageTitle: 'Page Not Found',
+    
+    res.status(500).render('500',{
+      path: '/Page Not Found',
+      pageTitle: 'Page Not Found',
+      errorMessage : err.message,
 })
   }
   function boomErrorHandler(err, req, res, next) {
