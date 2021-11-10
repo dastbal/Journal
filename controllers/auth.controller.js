@@ -1,4 +1,6 @@
-const boom = require('@hapi/boom')
+const UserService = require('../services/user.service');
+
+const service  = new UserService()
 
 exports.getLogin  = (req,res,next)=>{
     res.render('auth/login',{
@@ -13,13 +15,11 @@ exports.getSignup  = (req,res,next)=>{
         errorMessage : null ,
     })
 }
-exports.postSignup  = (req,res,next)=>{
+exports.postSignup  = async (req,res,next)=>{
     console.log(' inside postsignup controller')
     console.log(req.body)
-    const { userName , email , password , confirmPassword , genre } = req.body
     if(res.locals.e ){
         const details = res.locals.e.details
-        console.log(details)
 
         return  res.render('auth/signup',{
             path: '/login',
@@ -28,6 +28,7 @@ exports.postSignup  = (req,res,next)=>{
         })
         
     }
-    console.log('iam here')
+    await service.findOne(req.body.email)
+    await service.create(req.body)
     res.redirect('/')
 }

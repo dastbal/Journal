@@ -4,7 +4,8 @@ function validatorHandler(schema , property) {
         const data = req[property]
         const {error} =schema.validate(data ,{abortEarly : false})
         if(error){
-            const e = new boom.Boom(error)
+            const e = new boom.badRequest(error)
+            console.log(e)
             res.locals.e = e;
             next()
         }
