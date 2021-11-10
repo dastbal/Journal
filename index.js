@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 
+const { connectMongoDB } = require('./libs/mongo')
 const routerJournal = require('./routes')
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
 
@@ -13,27 +13,10 @@ const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/er
 
 
 
-const port = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views','views');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
-
-
-const  config = require('./config/config');
-
-const USER = encodeURIComponent(config.dbUser);
-const PASSWORD = encodeURIComponent(config.dbPassword);
-const MONGODB_URL = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWORD}@cluster0.gimcb.mongodb.net/${config.dbName}?retryWrites=true&w=majority`
-const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    //useCreateIndex: true,
-    //useFindAndModify: false,
-    family: 4
-};
-
-
 
 
 // cors 
@@ -54,24 +37,8 @@ app.use(boomErrorHandler)
 app.use(errorHandler)
 
 
-
-// funcion  to connect to mongodb
-const connectMongoDB = async ()=>{
-    try{
-
-        const connect =  await mongoose.connect(MONGODB_URL, options)
-        
-        app.listen(port,()=>{ console.log('connected' )})
-        
-
-    }catch(e){
-        app.listen(port,()=>{ console.log('mongoDB not connected ---->' , e)})
-        
-    }
-}
-
-
-connectMongoDB()
+// star  the server port =3000
+connectMongoDB(app)
 
 
 

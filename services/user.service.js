@@ -10,7 +10,7 @@ const User = require('../models/user.model');
 class UserService {
     constructor() {}
   
-    async create(data) {
+    async create(data ) {
         try{
 
             const password =  await bcrypt.hash(data.password, 12)
@@ -20,7 +20,7 @@ class UserService {
             const user = new User( dataUpdated)
             await user.save();
         }catch(e){
-            next(new boom.serverUnavailable("Please try more late."))
+            next(new boom.serverUnavailable('Please try more late.'))
         }
     }
   
@@ -30,13 +30,10 @@ class UserService {
     //   return rta;
     // }
   
-    async findOne(email) {
-        const userDoc  =  await User.findOne({email:email})
-        //console.log('usedoc',userDoc)
-        if(userDoc){
-            throw new boom.badRequest('E-mail exists already, please pick a different one')
-            
-        }
+    async findOne(email ) {
+        const user =  await User.findOne({email:email})
+        
+        return user
     }
   
     // async update(id, changes) {

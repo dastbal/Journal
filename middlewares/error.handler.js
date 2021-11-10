@@ -24,7 +24,7 @@ function logErrors (err, req, res, next) {
         errorMessage : message,
         oldInput:{...req.body},
       });
-    }else if(err.isBoom && err.output.payload.error == 'Bad Data'){
+    }else if(err.isBoom && err.output.payload.error == 'Unprocessable Entity' ){
       const { output } = err ;
       const message = output.payload.message
       
