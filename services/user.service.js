@@ -34,8 +34,9 @@ class UserService {
         const userDoc  =  await User.findOne({email:email})
         //console.log('usedoc',userDoc)
         if(userDoc){
+            throw new boom.badRequest('E-mail exists already, please pick a different one')
             
-            }
+        }
     }
   
     // async update(id, changes) {

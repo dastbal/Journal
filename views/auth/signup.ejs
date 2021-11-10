@@ -17,11 +17,10 @@
         </div>
         
         <% if (errorMessage) { %> 
+            
 
-            <% errorMessage.forEach( e => { %>
-
-             <p> <%= e.message %> </p>
-            <% }) %> 
+            <p><%= errorMessage %> </p>
+            
         <% } %>
         
        
@@ -30,23 +29,23 @@
             <label for="userName">
                 Username
 
-                <input type="userName" required name="userName" id="userName" placeholder="David" >
+                <input type="userName" required name="userName" id="userName" placeholder="David"  value="<% if (oldInput) { %><%= oldInput.userName %><% } %>" 
             </label>
             
             <label for="email">
                 E-mail
 
-                <input type="email" required name="email" id="email"  placeholder="kevin@Tello.com"   >
+                <input type="email" required name="email" id="email"  placeholder="kevin@Tello.com" value="<% if (oldInput) { %><%= oldInput.email %><% } %>"  >
             </label>
             <label for="password">
                 Password
                 
-                <input type="password"  required name="password"  step="0.01" id="password">
+                <input type="password"  required name="password"  step="0.01" id="password" value="<% if (oldInput) { %><%= oldInput.password %><% } %>">
             </label>                    
             <label for="confirmPassword">
                 Confirm Password
                 
-                <input type="password"  required name="confirmPassword"   id="confirmPassword" >
+                <input type="password"  required name="confirmPassword"   id="confirmPassword" value="<% if (oldInput) { %><%= oldInput.confirmPassword %><% } %>" >
             </label> 
             <p>Genre </p>
             <div>

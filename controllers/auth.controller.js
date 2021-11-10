@@ -1,3 +1,4 @@
+const { ReturnDocument } = require('mongoose/node_modules/mongodb');
 const UserService = require('../services/user.service');
 
 const service  = new UserService()
@@ -6,6 +7,8 @@ exports.getLogin  = (req,res,next)=>{
     res.render('auth/login',{
         path: '/login',
         pageTitle: 'Login',
+        errorMessage : null ,
+        oldInput:null,
     })
 }
 exports.getSignup  = (req,res,next)=>{
@@ -13,22 +16,18 @@ exports.getSignup  = (req,res,next)=>{
         path: '/signup',
         pageTitle: 'Sign Up',
         errorMessage : null ,
+        oldInput:null,
     })
 }
 exports.postSignup  = async (req,res,next)=>{
-    console.log(' inside postsignup controller')
-    console.log(req.body)
-    if(res.locals.e ){
-        const details = res.locals.e.details
-
-        return  res.render('auth/signup',{
-            path: '/login',
-            pageTitle: " Sign Up",
-            errorMessage : details ,
-        })
-        
+    
+    try {
+        // to verify if exist the email
+        await service.findOne(req.body.email)
+        // to create the new user
+        await service.create(req.body)
+        res.redirect('/')
+    } catch (error) {
+        return next(error)
     }
-    await service.findOne(req.body.email)
-    await service.create(req.body)
-    res.redirect('/')
 }
