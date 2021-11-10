@@ -8,18 +8,25 @@
     <main>
         <div class="text-logo">
             <h1>journal</h1>
-            <span> remeber your experiences</span>
+            <span> remember your experiences</span>
             <div>
                 <hr/>
                 <span>O</span>
                 <hr/>
             </div>
         </div>
-        <!-- <% if (errorMessage) { %>
-            <p class="alertMessage"> <%= errorMessage %> </p>
-         
-        <% } %> -->
+        
+        <% if (errorMessage) { %> 
+
+            <% errorMessage.forEach( e => { %>
+
+             <p> <%= e.message %> </p>
+            <% }) %> 
+        <% } %>
+        
+       
         <form  class="form-control" action="/signup" method="POST">
+
             <label for="userName">
                 Username
 
@@ -43,16 +50,16 @@
             </label> 
             <p>Genre </p>
             <div>
-                <input type="radio" id="male" name="male" value="Male"
+                <input type="radio" id="male" name="genre" value="male"
                        checked>
                 <label for="male">Male</label>
               </div>
               
               <div>
-                <input type="radio" id="female" name="female" value="Female">
+                <input type="radio" id="female" name="genre" value="female">
                 <label for="female">Female</label>
               </div>
-            <!-- <input type="hidden" value="<%= csrfToken %>" name="_csrf"> -->
+            <!-- <input type="hidden" value="<= csrfToken %>" name="_csrf"> -->
                    
                     
             <button class="btn" type="submit"> Sign Up </button>

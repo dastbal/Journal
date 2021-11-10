@@ -1,0 +1,13 @@
+ github:
+
+ https://github.com/dastbal/Journal
+
+ heroku:
+
+ https://still-brushlands-88997.herokuapp.com/
+
+
+ (design): 
+
+ https://www.figma.com/file/OReqcneYtC2tWdNZWmiSwY/journal?node-id=0%3A1
+
