@@ -38,7 +38,7 @@ const options = {
 
 // cors 
 const corsOptions = {
-    origin: "https://cse341ecommerceapp.herokuapp.com/",
+    origin: "https://still-brushlands-88997.herokuapp.com/",
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
