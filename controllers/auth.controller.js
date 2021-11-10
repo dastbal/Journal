@@ -1,9 +1,14 @@
-const boom = require('@hapi/boom')
+const { ReturnDocument } = require('mongoose/node_modules/mongodb');
+const UserService = require('../services/user.service');
+
+const service  = new UserService()
 
 exports.getLogin  = (req,res,next)=>{
     res.render('auth/login',{
         path: '/login',
         pageTitle: 'Login',
+        errorMessage : null ,
+        oldInput:null,
     })
 }
 exports.getSignup  = (req,res,next)=>{
@@ -11,23 +16,18 @@ exports.getSignup  = (req,res,next)=>{
         path: '/signup',
         pageTitle: 'Sign Up',
         errorMessage : null ,
+        oldInput:null,
     })
 }
-exports.postSignup  = (req,res,next)=>{
-    console.log(' inside postsignup controller')
-    console.log(req.body)
-    const { userName , email , password , confirmPassword , genre } = req.body
-    if(res.locals.e ){
-        const details = res.locals.e.details
-        console.log(details)
-
-        return  res.render('auth/signup',{
-            path: '/login',
-            pageTitle: " Sign Up",
-            errorMessage : details ,
-        })
-        
+exports.postSignup  = async (req,res,next)=>{
+    
+    try {
+        // to verify if exist the email
+        await service.findOne(req.body.email)
+        // to create the new user
+        await service.create(req.body)
+        res.redirect('/')
+    } catch (error) {
+        return next(error)
     }
-    console.log('iam here')
-    res.redirect('/')
 }

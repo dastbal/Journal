@@ -14,7 +14,7 @@ router.get('/signup',
     )
 
 router.post('/signup',
-    validatorHandler(createUserSchema, 'body'),
+    validatorHandler(createUserSchema, 'body','signup'),
     authController.postSignup
     )
 
