@@ -34,17 +34,19 @@ app.use(cors(corsOptions));
 userSession(app)
 
 app.use( async (req,res,next)=>{
-    if(!req.session.user){
-        return next()
+   console.log(' session' ,  req.session.user)
+   if(!req.session.user){
+     return next()
     }
     let user 
     try{
       user = await User.findById(req.session.user._id)
+      console.log('User--->' ,  user)
+      req.user= user;
+      return next()
     }catch(e){
       return next(new Error(e) )
     }
-    req.user= user;
-    next()
   })
 
 

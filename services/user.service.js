@@ -16,7 +16,7 @@ class UserService {
             const password =  await bcrypt.hash(data.password, 12)
             const confirmPassword =  await bcrypt.hash(data.confirmPassword, 12)
             const dataUpdated = {...data, password, confirmPassword}
-            console.log(dataUpdated)
+            //console.log(dataUpdated)
             const user = new User( dataUpdated)
             await user.save();
         }catch(e){
