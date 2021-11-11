@@ -20,21 +20,21 @@ const options = {
 // funcion  to connect to mongodb
 const connectMongoDB = async (app)=>{
     try{
-        // session config
-        // const store = new MongoDBStore({
-        //     uri : MONGODB_URI,
-        //     collection: 'sessions'
+        //session config
+        const store = new MongoDBStore({
+            uri : MONGODB_URI,
+            collection: 'sessions'
         
-        // })
+        })
 
-        // app.use(
-        //     session({
-        //     secret: 'my secret', 
-        //     resave : false ,
-        //     saveUninitialized: false,
-        //     store: store,
-        // }
-        // ));
+        app.use(
+            session({
+            secret: 'my secret', 
+            resave : false ,
+            saveUninitialized: false,
+            store: store,
+        }
+        ));
             
 
         await mongoose.connect(MONGODB_URL, options)
