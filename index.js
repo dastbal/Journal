@@ -23,31 +23,18 @@ app.use(express.static(path.join(__dirname,"public")));
 
 
 // cors 
+
 const corsOptions = {
-    origin: "https://still-brushlands-88997.herokuapp.com/",
-    optionsSuccessStatus: 200
+  origin: "https://still-brushlands-88997.herokuapp.com/",
+  optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
+// star  the server port =3000
+connectMongoDB(app)
 
-// session config
-userSession(app)
 
-app.use( async (req,res,next)=>{
-   console.log(' session' ,  req.session.user)
-   if(!req.session.user){
-     return next()
-    }
-    let user 
-    try{
-      user = await User.findById(req.session.user._id)
-      console.log('User--->' ,  user)
-      req.user= user;
-      return next()
-    }catch(e){
-      return next(new Error(e) )
-    }
-  })
+
 
 
 // global variables
@@ -68,8 +55,6 @@ app.use(boomErrorHandler)
 app.use(errorHandler)
 
 
-// star  the server port =3000
-connectMongoDB(app)
 
 
 
