@@ -48,31 +48,31 @@ const connectMongoDB = async (app)=>{
         
     }
 }
-const userSession = async (app)=>{
-    try{
-            // session config
-            const store = new MongoDBStore({
-                uri : MONGODB_URI,
-                collection: 'sessions'
+// const userSession = async (app)=>{
+//     try{
+//             // session config
+//             const store =  new MongoDBStore({
+//                 uri : MONGODB_URI,
+//                 collection: 'sessions'
             
-            })
+//             })
 
-            app.use(
-                session({
-                secret: 'my secret', 
-                resave : false ,
-                saveUninitialized: false,
-                store: store,
-            }
-            ));
+//             app.use(
+//                 session({
+//                 secret: 'my secret', 
+//                 resave : false ,
+//                 saveUninitialized: false,
+//                 store: store,
+//             }
+//             ));
 
         
         
 
-    }catch(e){
-        console.log(e)
+//     }catch(e){
+//         console.log(e)
         
-    }
-}
+//     }
+// }
 
-module.exports = { connectMongoDB, userSession }
+module.exports = { connectMongoDB}

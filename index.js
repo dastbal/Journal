@@ -39,9 +39,9 @@ connectMongoDB(app)
 
 // global variables
 app.use( (req,res,next)=>{
-  res.locals.isLoggedIn = req.session.isLoggedIn;
+  //res.locals.isLoggedIn = req.session.isLoggedIn;
   //res.locals.csrfToken =  req.csrfToken()
-  res.locals.userName =  req.session.userName
+  //res.locals.userName =  req.session.userName
   //console.log(res.locals.userName)
   next()
 })
