@@ -1,5 +1,6 @@
 const express = require('express');
 const authRouter = require('./auth.router')
+const journalRouter = require('./journal.router')
 
 
 function routerJournal(app) {
@@ -7,7 +8,7 @@ function routerJournal(app) {
   const router  = express.Router()
   app.use(router);
   router.use('/', authRouter);
-  //router.use('/users', usersRouter);
+  router.use('/journal', journalRouter);
   //router.use('/users', usersRouter);
 }
 

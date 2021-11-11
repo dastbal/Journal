@@ -1,6 +1,7 @@
 const UserService = require('../services/user.service');
 const boom = require('@hapi/boom')
-
+const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 const service  = new UserService()
 
@@ -13,17 +14,30 @@ exports.getLogin  = (req,res,next)=>{
     })
 }
 exports.postLogin  = async (req,res,next)=>{
-try{
+    const { password , email} = req.body 
     try{
-        const user = await service.findOne(req.body.email )
-            if(!user){throw new Error()  }
-    }catch(e){throw new Error("Invalid Email")}
+        // to verify is the account exist if not  notify a error
+        const user = await service.findOne(email )
+        try{ if(!user){throw new Error()  }
+        }catch(e){throw new Error("Invalid Email")}
+
+        // verify is a password is valid
+        const doMatch = await bcrypt.compare(password, user.password);
+        if (doMatch){
+            req.session.isLoggedIn = true ;  
+            req.session.userName =  user.userName ;  
+            req.session.user = user;
+            await req.session.save()
+            return res.redirect('/journal/home')
+        }
+        try{ if(!doMatch){throw new Error()  }
+        }catch(e){throw new Error("Invalid Password")}
+            
+    }catch(error){
         
-}catch(error){
-    
-    return next(new boom.badData(error))
-    
-}
+        return next(new boom.badData(error))
+        
+    }
 }
 exports.getSignup  = (req,res,next)=>{
     res.render('auth/signup',{
@@ -36,16 +50,11 @@ exports.getSignup  = (req,res,next)=>{
 exports.postSignup  = async (req,res,next)=>{
     
     try {
-        try{
-            // to verify if exist the email
-            const user = await service.findOne(req.body.email )
-            if(user){
-                throw new Error()  
-            }
-        }catch(e){
-            throw new Error("E-mail exists already, please pick a different one")  
-            
-        }
+        // to verify if exist the email
+        const user = await service.findOne(req.body.email )
+        try{ if(user){throw new Error()  }
+        }catch(e){ throw new Error("E-mail exists already, please pick a different one")  }
+
         // to create the new user
         await service.create(req.body)
         res.redirect('/')
