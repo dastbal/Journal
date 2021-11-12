@@ -1,9 +1,9 @@
 const Joi = require('joi');
 
-const userName  = Joi.string().alphanum().min(4).max(15)
+const userName  = Joi.string().min(4).max(15)
 const email  = Joi.string().email()
-const password  = Joi.string().alphanum().min(6).max(30)
-const confirmPassword  = Joi.string().alphanum().min(6).max(30)
+const password  = Joi.string().min(6).max(30)
+const confirmPassword  = Joi.string().min(6).max(30)
 const genre  = Joi.string()
 
 const createUserSchema = Joi.object({

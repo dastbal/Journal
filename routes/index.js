@@ -4,7 +4,7 @@ const journalRouter = require('./journal.router')
 
 
 function routerJournal(app) {
-  console.log('hey there')
+  console.log('in the routes')
   const router  = express.Router()
   app.use(router);
   router.use('/', authRouter);

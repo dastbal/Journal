@@ -7,14 +7,14 @@ exports.getHome  = (req,res,next)=>{
     })
 }
 exports.getFeed  = (req,res,next)=>{
-    res.render('auth/login',{
-        path: '/login',
+    res.render('journal/feed',{
+        path: '/Feed',
         pageTitle: 'Feed',
       
     })
 }
 exports.getProfile  = (req,res,next)=>{
-    res.render('auth/login',{
+    res.render('journal/profile',{
         path: '/login',
         pageTitle: 'Profile'
     })
