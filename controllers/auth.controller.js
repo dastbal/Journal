@@ -24,9 +24,9 @@ exports.postLogin  = async (req,res,next)=>{
         // verify is a password is valid
         const doMatch = await bcrypt.compare(password, user.password);
         if (doMatch){
-            // req.session.isLoggedIn = true ;  
-            // req.session.userName =  user.userName ;  
-            // req.session.user = user;
+            req.session.isLoggedIn = true ;  
+            req.session.userName =  user.userName ;  
+            req.session.user = user;
             // await req.session.save()        i had to remove this because was crushing the app and I did not why?
             return res.redirect('/journal/home')
         }
