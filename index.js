@@ -4,10 +4,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
 
-const { connectMongoDB , userSession } = require('./libs/mongo')
+const { connectMongoDB  } = require('./libs/mongo')
 const routerJournal = require('./routes')
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
-const User = require('./models/user.model');
+//const User = require('./models/user.model');
 
 
 

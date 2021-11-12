@@ -9,7 +9,6 @@ const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const NAME = encodeURIComponent(config.dbName);
 const MONGODB_URL = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWORD}@cluster0.gimcb.mongodb.net/${NAME}?retryWrites=true&w=majority`
-const MONGODB_URI = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWORD}@cluster0.gimcb.mongodb.net/${NAME}?`
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -22,20 +21,20 @@ const options = {
 const connectMongoDB = async (app)=>{
     try{
         //session config
-        const store = new MongoDBStore({
-            uri : MONGODB_URI,
-            collection: 'sessions'
+        // const store = new MongoDBStore({
+        //     uri : MONGODB_URL,
+        //     collection: 'sessions'
         
-        })
+        // })
 
-        app.use(
-            session({
-            secret: 'my secret', 
-            resave : false ,
-            saveUninitialized: false,
-            store: store,
-        }
-        ));
+        // app.use(
+        //     session({
+        //     secret: 'my secret', 
+        //     resave : false ,
+        //     saveUninitialized: false,
+        //     store: store,
+        // }
+        // ));
             
 
         await mongoose.connect(MONGODB_URL, options)
