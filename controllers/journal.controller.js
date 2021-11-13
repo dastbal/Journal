@@ -1,7 +1,7 @@
 const boom = require('@hapi/boom')
 
 exports.getHome  = (req,res,next)=>{
-    res.render('journal/home',{
+    res.render('home/home',{
         path: '/',
         pageTitle: 'Home',
     })
