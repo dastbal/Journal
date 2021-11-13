@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const journalController = require('../controllers/journal.controller');
-//const registerRouter = require('./register.router')
+const registerRouter = require('./register.router')
 
 //const validatorHandler = require(`../middlewares/validator.handler`)
 
@@ -16,8 +16,8 @@ journalController.getFeed
 router.get('/profile',
 journalController.getProfile
 )
+router.use('/register', registerRouter)
 
-//router.use('/register', registerRouter)
 
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require('express');
 const authRouter = require('./auth.router')
 const journalRouter = require('./journal.router')
+const registerRouter = require('./register.router')
 
 
 function routerJournal(app) {
@@ -9,7 +10,6 @@ function routerJournal(app) {
   app.use(router);
   router.use('/', authRouter);
   router.use('/journal', journalRouter);
-  //router.use('/users', usersRouter);
 }
 
 module.exports = routerJournal;

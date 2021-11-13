@@ -5,7 +5,7 @@ const registerController = require('../controllers/register.controller');
 
 
 
-router.get('/',
+router.get('/dashboard',
     registerController.getRegister
     )
     
