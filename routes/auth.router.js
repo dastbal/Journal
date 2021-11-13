@@ -21,7 +21,10 @@ router.post('/signup',
     validatorHandler(createUserSchema, 'body','signup'),
     authController.postSignup
     )
-
+router.get('/edit-profile',
+    authController.getEditProfile
+    
+    )
 
 
 module.exports = router;
