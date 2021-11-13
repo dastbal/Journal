@@ -24,11 +24,6 @@ class UserService {
         }
     }
   
-    // async find() {
-  
-    //   const rta = await models.User.findAll()
-    //   return rta;
-    // }
   
     async findOne(email ) {
         const user =  await User.findOne({email:email})
@@ -36,17 +31,7 @@ class UserService {
         return user
     }
   
-    // async update(id, changes) {
-    //   const user =  await this.findOne(id);
-    //   const rta = await  user.update(changes);
-    //   return rta ;
-    // }
-  
-    // async delete(id) {
-    //   const user =  await this.findOne(id);
-    //   await user.destroy();
-    //   return { id };
-    // }
+    
   }
   
   module.exports = UserService;
