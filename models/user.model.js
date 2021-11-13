@@ -22,6 +22,9 @@ const userSchema = new Schema({
         type :String,
         required: true,
     },
+    aboutMe:{
+        type:String,
+    },
     resetToken: String,
     resetTokenExpiration: Date,
     

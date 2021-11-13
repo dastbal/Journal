@@ -62,3 +62,11 @@ exports.postSignup  = async (req,res,next)=>{
         return next(new boom.badRequest(error))
     }
 }
+exports.getEditProfile  = (req,res,next)=>{
+    res.render('auth/edit-profile',{
+        path: '/edit-profile',
+        pageTitle: 'Edit Profile',
+       // errorMessage : null ,
+        //oldInput:null,
+    })
+}
