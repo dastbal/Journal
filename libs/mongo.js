@@ -14,15 +14,13 @@ const MONGODB_URL = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWOR
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    //useCreateIndex: true,
-    //useFindAndModify: false,
-    family: 4
+    
 };
 
 // funcion  to connect to mongodb
 const connectMongoDB = async (app)=>{
     try{
-        const connection  = await mongoose.connect(MONGODB_URL, options)
+        const connection  = await mongoose.createConnection(MONGODB_URL, options)
 
         // session config
         const sessionStore = new MongoDBStore({
