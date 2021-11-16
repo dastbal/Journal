@@ -3,15 +3,23 @@ const path  = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 
 
-const { connectMongoDB  } = require('./libs/mongo')
+const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
 const routerJournal = require('./routes')
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
 //const User = require('./models/user.model');
 
 
-
+app.use(session({
+  secret: 'journal',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({mongoUrl: MONGODB_URL})
+}
+))
 
 
 
@@ -42,10 +50,10 @@ connectMongoDB(app)
 
 // global variables
 app.use( (req,res,next)=>{
-  //res.locals.isLoggedIn = req.session.isLoggedIn;
+  res.locals.isLoggedIn = req.session.isLoggedIn;
   //res.locals.csrfToken =  req.csrfToken()
-  //res.locals.userName =  req.session.userName
-  //console.log(res.locals.userName)
+  res.locals.userName =  req.session.userName
+  console.log(res.locals.userName)
   next()
 })
   
