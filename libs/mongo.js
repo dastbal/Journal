@@ -1,5 +1,6 @@
 const  config = require('../config/config');
 const mongoose = require('mongoose');
+
 const boom = require('@hapi/boom')
 
 
@@ -18,10 +19,9 @@ const options = {
 // funcion  to connect to mongodb
 const connectMongoDB = async (app)=>{
     try{
-        await mongoose.connect(MONGODB_URL, options)
+        await mongoose.createConnection(MONGODB_URL, options)
 
-        
-            
+       
 
 
         
