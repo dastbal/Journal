@@ -21,32 +21,47 @@
 
             <p><%= errorMessage %> </p>
             
-        <% } %>
-        
-       
-        <form  class="form-control" action="/signup" method="POST">
-
-            <label for="userName">
-                Username
-
-                <input type="userName" required name="userName" id="userName" placeholder="David"  value="<% if (oldInput) { %><%= oldInput.userName %><% } %>" 
-            </label>
+            <% } %>
             
-            <label for="email">
-                E-mail
+            
+        
+        <form   action="/signup" method="POST">
 
-                <input type="email" required name="email" id="email"  placeholder="kevin@Tello.com" value="<% if (oldInput) { %><%= oldInput.email %><% } %>"  >
-            </label>
+                        <div class="form-control">
+                            
+                            <label for="userName">
+                                Username
+                                
+                                <input type="userName" required name="userName" id="userName" placeholder="David"  value="<% if (oldInput) { %><%= oldInput.userName %><% } %>" >
+                            </label>
+                        </div> 
+ 
+                        <div class="form-control">
+
+                            <label for="email">
+                                E-mail
+                                
+                                <input type="email" required name="email" id="email"  placeholder="kevin@Tello.com" value="<% if (oldInput) { %><%= oldInput.email %><% } %>"  >
+                            </label>
+                        </div> 
+                        <div class="form-control">
+
             <label for="password">
                 Password
                 
                 <input type="password"  required name="password"  step="0.01" id="password" value="<% if (oldInput) { %><%= oldInput.password %><% } %>">
-            </label>                    
+            </label>  
+        </div> 
+            <div class="form-control">
+                  
             <label for="confirmPassword">
                 Confirm Password
                 
                 <input type="password"  required name="confirmPassword"   id="confirmPassword" value="<% if (oldInput) { %><%= oldInput.confirmPassword %><% } %>" >
-            </label> 
+            </label>
+            </div> 
+            <div class="form-control">
+
             <p>Genre </p>
             <div>
                 <input type="radio" id="male" name="genre" value="male"
@@ -57,6 +72,7 @@
               <div>
                 <input type="radio" id="female" name="genre" value="female">
                 <label for="female">Female</label>
+              </div>
               </div>
             <!-- <input type="hidden" value="<= csrfToken %>" name="_csrf"> -->
                    

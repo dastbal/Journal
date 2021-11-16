@@ -1,1 +1,25 @@
 @import url('./reset.css');
+:root{
+    --color-btn-blue : #053CFF;
+    --color-btn-red : #FF2C2C;
+    --color-text-blue : #1F67F1;
+    --color-gray : #6B6B6B;
+    --color-background-white : #FAF9F9;
+    --color-background-input : #F1EEEE;
+
+
+    --btn-width:70%;
+    --btn-height:36px;
+    --input-height:40px;
+}
+body{
+    background-color: var(--color-background-white);
+    width: 100%;
+}
+a{
+    text-decoration: none;
+}
+.centered{
+    display: flex;
+    justify-content: center;
+}

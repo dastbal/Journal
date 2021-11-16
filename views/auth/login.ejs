@@ -23,17 +23,19 @@
         
         <form action="/" method="POST">
             <div class="form-control">
-                <label for="email">E-Mail</label>
+                <label for="email"></label>
                 <input 
                     type="email" 
                     name="email" 
                     id="email" 
+                    placeholder="Email"
                     value="<% if (oldInput) { %><%= oldInput.email %><% }%>"
                     >
             </div>
             <div class="form-control">
-                <label for="password">Password</label>
+                <label for="password"></label>
                     <input 
+                    placeholder="Password"
                     type="password" 
                     name="password" 
                     id="password" 
@@ -41,12 +43,13 @@
                     >
             </div>
             <!-- <input type="hidden" name="csrf" value="" > -->
-            <div class="">
+            <div class="form-control forgot">
+                
                 <a href="/reset">Forgot your login details?</a>
             </div>
-            <button class="btn" type="submit">Login</button>
+            <button class="btn" type="submit">Log In</button>
         </form>
-        <div class="centered">
+        <div class="centered account">
             <h3>Don't have an account?<a href="/signup">Sign Up</a></h3>
         </div>
     </main>
