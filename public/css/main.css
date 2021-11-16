@@ -19,7 +19,20 @@ body{
 a{
     text-decoration: none;
 }
+h1{
+    text-align: center;
+    font-size: 60px;
+}
 .centered{
     display: flex;
     justify-content: center;
+}
+.text-logo h1, title-journal h2{
+    font-family: 'Reenie Beanie';
+}
+.line{
+    display: flex;
+}
+.line  hr{
+    width: 40%;
 }
