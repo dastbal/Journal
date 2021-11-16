@@ -1,7 +1,7 @@
 const  config = require('../config/config');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
+const MongoStore = require('connect-mongo');
 const boom = require('@hapi/boom')
 
 
@@ -22,19 +22,15 @@ const connectMongoDB = async (app)=>{
     try{
         const connection  = await mongoose.createConnection(MONGODB_URL, options)
 
-        // session config
-        const sessionStore = new MongoDBStore({
-            mongooseConnection: connection,
-            collection: 'sessions'
-        
-        })
-
+        // session config  
         app.use(
             session({
-            secret: 'my secret', 
+            secret: 'secret', 
             resave : false ,
             saveUninitialized: false,
-            store: sessionStore,
+            store: MongoStore.create({
+                mongoUrl : MONGODB_URL
+            })
         }
         ));
             
