@@ -19,7 +19,7 @@ const options = {
 // funcion  to connect to mongodb
 const connectMongoDB = async (app)=>{
     try{
-        await mongoose.createConnection(MONGODB_URL, options)
+        await mongoose.connect(MONGODB_URL, options)
 
        
 

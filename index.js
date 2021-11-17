@@ -12,6 +12,9 @@ const routerJournal = require('./routes')
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
 //const User = require('./models/user.model');
 
+// star  the server port =3000
+connectMongoDB(app)
+
 
 app.use(session({
   secret: 'journal',
@@ -40,9 +43,6 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
-
-// star  the server port =3000
-connectMongoDB(app)
 
 
 
