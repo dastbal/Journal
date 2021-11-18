@@ -19,15 +19,14 @@ const options = {
 };
 
 // funcion  to connect to mongodb
-const connectMongoDB = async (app)=>{
+const connectMongoDB =  (app)=>{
     try{
-        const connection = await mongoose.connect(MONGODB_URL, options, ()=>{
+        const connection = mongoose.connect(MONGODB_URL, options, ()=>{
             console.log('mongoDB connected')
             app.listen(port,()=>{ console.log('app listen ' )})
         }
 
             )
-        return ["connected", connection]
 
         
 

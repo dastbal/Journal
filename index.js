@@ -14,37 +14,14 @@ const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/er
 
 // start  the server port =3000
 
-  connectMongoDB(app).then((x)=>{
-    console.log(x[0])
-
-
-    app.use(session({
-      secret: 'journal',
-       resave: false,
-       saveUninitialized: false,
-       store: MongoStore.create({mongoUrl: MONGODB_URL})
-      }
-      ))
-  })
-  
-
-
 
 app.use(session({
   secret: 'journal',
-   resave: false,
-   saveUninitialized: false,
-   store: MongoStore.create({mongoUrl: MONGODB_URL})
-  }
-  ))
-  
-
-
-
-
-
-
-
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({mongoUrl: MONGODB_URL})
+}
+))
 
 app.set('view engine', 'ejs');
 app.set('views','views');
@@ -74,7 +51,7 @@ app.use( (req,res,next)=>{
   console.log(res.locals.userName)
   next()
 })
-  
+
 //  routes 
 routerJournal(app)
 
@@ -86,6 +63,7 @@ app.use(errorHandler)
 
 
 
+connectMongoDB(app)
 
 
 
