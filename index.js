@@ -31,30 +31,14 @@ const options = {
 };
 
 // funcion  to connect to mongodb
-const connectMongoDB = async  (app)=>{
-    try{
-        await mongoose.connect(MONGODB_URL, options, ()=>{
-            console.log('mongoDB connected')
-            app.listen(port,()=>{ console.log('app listen ' )})
-        }
-
-            )
-
-        
-
-
+mongoose.connect(MONGODB_URL, options).then(()=>{
+  app.listen(port,()=>{ console.log('app listen ' )})
+}) .catch(e=>{
+              app.listen(port,()=>{ console.log('mongoDB not connected ---->' , e)})
+          })
         
         
-
-    }catch(e){
-        app.listen(port,()=>{
-            console.log('mongoDB not connected ---->' , e)
-        })
-        
-        
-    }
-}
-
+  
 
 
 app.use(session({
