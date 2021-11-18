@@ -31,9 +31,9 @@ const options = {
 };
 
 // funcion  to connect to mongodb
-const connectMongoDB =  (app)=>{
+const connectMongoDB = async  (app)=>{
     try{
-        const connection = mongoose.connect(MONGODB_URL, options, ()=>{
+        await mongoose.connect(MONGODB_URL, options, ()=>{
             console.log('mongoDB connected')
             app.listen(port,()=>{ console.log('app listen ' )})
         }
