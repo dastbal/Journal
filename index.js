@@ -90,7 +90,7 @@ app.use(errorHandler)
 
 
 // start  the server port =3000
-connectMongoDB(app)
+
 
 
 
