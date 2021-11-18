@@ -10,19 +10,37 @@ const MongoStore = require('connect-mongo')
 const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
 const routerJournal = require('./routes')
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
-//const User = require('./models/user.model');
+//const User = require('./models/user.model');ç
 
-// star  the server port =3000
-connectMongoDB(app)
+// start  the server port =3000
+
+  connectMongoDB(app).then((x)=>{
+    console.log(x[0])
+
+
+    app.use(session({
+      secret: 'journal',
+       resave: false,
+       saveUninitialized: false,
+       store: MongoStore.create({mongoUrl: MONGODB_URL})
+      }
+      ))
+  })
+  
+
 
 
 app.use(session({
   secret: 'journal',
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({mongoUrl: MONGODB_URL})
-}
-))
+   resave: false,
+   saveUninitialized: false,
+   store: MongoStore.create({mongoUrl: MONGODB_URL})
+  }
+  ))
+  
+
+
+
 
 
 

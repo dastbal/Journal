@@ -1,5 +1,7 @@
 const  config = require('../config/config');
 const mongoose = require('mongoose');
+const session = require('express-session')
+const MongoStore = require('connect-mongo')
 
 const boom = require('@hapi/boom')
 
@@ -19,13 +21,18 @@ const options = {
 // funcion  to connect to mongodb
 const connectMongoDB = async (app)=>{
     try{
-        await mongoose.connect(MONGODB_URL, options)
+        const connection = await mongoose.connect(MONGODB_URL, options, ()=>{
+            console.log('mongoDB connected')
+            app.listen(port,()=>{ console.log('app listen ' )})
+        }
 
-       
+            )
+        return ["connected", connection]
+
+        
 
 
         
-        app.listen(port,()=>{ console.log('connected' )})
         
 
     }catch(e){
