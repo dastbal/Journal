@@ -1,11 +1,9 @@
 const boom = require('@hapi/boom')
 
-exports.getHome  = (req,res,next)=>{
-    res.render('home/home',{
-        path: '/',
-        pageTitle: 'Home',
-    })
-}
+//     service user
+//  
+
+
 exports.getFeed  = (req,res,next)=>{
     res.render('journal/feed',{
         path: '/Feed',
@@ -14,8 +12,13 @@ exports.getFeed  = (req,res,next)=>{
     })
 }
 exports.getProfile  = (req,res,next)=>{
+
+    const user = req.session.user;
     res.render('journal/profile',{
-        path: '/login',
-        pageTitle: 'Profile'
+        path:'/profile',
+        pageTitle:'Profile',
+        user: user , // enviando
     })
+    //  enviarlo  al render 
+    // view   reciva the   user.   y lo renderizar .
 }

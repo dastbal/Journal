@@ -24,10 +24,10 @@ exports.postLogin  = async (req,res,next)=>{
         // verify is a password is valid
         const doMatch = await bcrypt.compare(password, user.password);
         if (doMatch){
-            // req.session.isLoggedIn = true ;  
-            // req.session.userName =  user.userName ;  
-            // req.session.user = user;
-            // await req.session.save()       
+             req.session.isLoggedIn = true ;  
+             req.session.userName =  user.userName ;  
+             req.session.user = user;
+             await req.session.save()       
             return res.redirect('/journal/home')
         }
         try{ if(!doMatch){throw new Error()  }
@@ -66,6 +66,9 @@ exports.getEditProfile  = (req,res,next)=>{
     res.render('auth/edit-profile',{
         path: '/edit-profile',
         pageTitle: 'Edit Profile',
+        oldInput:{
+            userName,
+        },
        // errorMessage : null ,
         //oldInput:null,
     })
