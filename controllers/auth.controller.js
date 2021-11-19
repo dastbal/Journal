@@ -24,10 +24,19 @@ exports.postLogin  = async (req,res,next)=>{
         // verify is a password is valid
         const doMatch = await bcrypt.compare(password, user.password);
         if (doMatch){
+<<<<<<< HEAD
              req.session.isLoggedIn = true ;  
              req.session.userName =  user.userName ;  
              req.session.user = user;
              await req.session.save()       
+=======
+            console.log(user)
+            req.session.isLoggedIn = true ;  
+            req.session.userName =  user.userName ;  
+            req.session.user = user;
+            await req.session.save()       
+
+>>>>>>> 3dd15c91fb99dad0f2eece48ad9f6c701754eabc
             return res.redirect('/journal/home')
         }
         try{ if(!doMatch){throw new Error()  }

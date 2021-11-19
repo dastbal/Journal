@@ -1,7 +1,5 @@
 const  config = require('../config/config');
 const mongoose = require('mongoose');
-const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
 const boom = require('@hapi/boom')
 
 
@@ -14,14 +12,13 @@ const MONGODB_URL = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWOR
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    //useCreateIndex: true,
-    //useFindAndModify: false,
-    family: 4
+    
 };
 
 // funcion  to connect to mongodb
 const connectMongoDB = async (app)=>{
     try{
+<<<<<<< HEAD
         //session config
          const store = new MongoDBStore({
             uri : MONGODB_URL,
@@ -37,9 +34,13 @@ const connectMongoDB = async (app)=>{
             store: store,
         }
          ));
+=======
+        await mongoose.connect(MONGODB_URL, options)
+
+        
+>>>>>>> 3dd15c91fb99dad0f2eece48ad9f6c701754eabc
             
 
-        await mongoose.connect(MONGODB_URL, options)
 
         
         app.listen(port,()=>{ console.log('connected' )})
@@ -55,4 +56,4 @@ const connectMongoDB = async (app)=>{
 }
 
 
-module.exports = { connectMongoDB }
+module.exports = { connectMongoDB ,MONGODB_URL }
