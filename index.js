@@ -1,16 +1,56 @@
 const express = require('express');
 const path  = require('path');
 const app = express();
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 
+const  config = require('./config/config');
 
-const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
+//const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
 const routerJournal = require('./routes')
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
 //const User = require('./models/user.model');
+
+
+
+
+
+
+const port = process.env.PORT || 3000;
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const NAME = encodeURIComponent(config.dbName);
+const MONGODB_URL = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWORD}@cluster0.gimcb.mongodb.net/${NAME}?retryWrites=true&w=majority`
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    
+};
+
+// funcion  to connect to mongodb
+const connectMongoDB = async  ()=>   {
+  return mongoose.connect(MONGODB_URL, options) 
+}
+
+connectMongoDB().then( async (x)=>{
+  app.listen(port,()=>{ console.log('app listen ' )})
+  //console.log(x)
+  app.use(session({
+    secret: 'journal',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({mongoUrl: MONGODB_URL})
+  }
+  ))
+}) .catch(e=>{
+              app.listen(port,()=>{ console.log('mongoDB not connected ---->' , e)})
+          })
+        
+        
+console.log('session' )
 
 
 app.use(session({
@@ -20,10 +60,6 @@ app.use(session({
   store: MongoStore.create({mongoUrl: MONGODB_URL})
 }
 ))
-
-
-
-
 
 app.set('view engine', 'ejs');
 app.set('views','views');
@@ -41,9 +77,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// star  the server port =3000
-connectMongoDB(app)
-
 
 
 
@@ -56,7 +89,7 @@ app.use( (req,res,next)=>{
   console.log(res.locals.userName)
   next()
 })
-  
+
 //  routes 
 routerJournal(app)
 
@@ -67,6 +100,8 @@ app.use(errorHandler)
 
 
 
+
+// start  the server port =3000
 
 
 
