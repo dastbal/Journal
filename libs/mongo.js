@@ -1,6 +1,6 @@
 const  config = require('../config/config');
 const mongoose = require('mongoose');
-const boom = require('@hapi/boom')
+
 
 
 
@@ -16,34 +16,19 @@ const options = {
 };
 
 // funcion  to connect to mongodb
-const connectMongoDB = async (app)=>{
+const connectMongoDB =  (app)=>{
     try{
-<<<<<<< HEAD
-        //session config
-         const store = new MongoDBStore({
-            uri : MONGODB_URL,
-            collection: 'sessions'
-        
-        })
-
-        app.use(
-            session({
-            secret: 'my secret', 
-            resave : false ,
-            saveUninitialized: false,
-            store: store,
+        const connection = mongoose.connect(MONGODB_URL, options, ()=>{
+            console.log('mongoDB connected')
+            app.listen(port,()=>{ console.log('app listen ' )})
         }
-         ));
-=======
-        await mongoose.connect(MONGODB_URL, options)
+
+            )
 
         
->>>>>>> 3dd15c91fb99dad0f2eece48ad9f6c701754eabc
-            
 
 
         
-        app.listen(port,()=>{ console.log('connected' )})
         
 
     }catch(e){
