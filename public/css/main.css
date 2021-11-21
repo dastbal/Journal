@@ -1,4 +1,5 @@
 @import url('./reset.css');
+@import url('./navigations.css');
 :root{
     --color-btn-blue : #053CFF;
     --color-btn-red : #FF2C2C;

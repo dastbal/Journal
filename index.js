@@ -38,19 +38,20 @@ const connectMongoDB = async  ()=>   {
 connectMongoDB().then( async (x)=>{
   app.listen(port,()=>{ console.log('app listen ' )})
   //console.log(x)
-  app.use(session({
-    secret: 'journal',
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({mongoUrl: MONGODB_URL})
-  }
-  ))
+ 
 }) .catch(e=>{
               app.listen(port,()=>{ console.log('mongoDB not connected ---->' , e)})
           })
         
         
 console.log('session' )
+app.use(session({
+  secret: 'journal',
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({mongoUrl: MONGODB_URL})
+}
+))
 
 
 app.use(session({
