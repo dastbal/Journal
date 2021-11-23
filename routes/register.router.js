@@ -8,5 +8,9 @@ const registerController = require('../controllers/register.controller');
 router.get('/',
     registerController.getRegister
     )
+
+router.post('/create-sheet',
+    registerController.postCreateSheet
+    )
     
 module.exports = router;

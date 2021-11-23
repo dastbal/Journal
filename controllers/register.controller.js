@@ -5,3 +5,7 @@ exports.getRegister = (req,res,next)=>{
         pageTitle: 'Register',
     })
 }
+exports.postCreateSheet = (req,res,next)=>{
+    console.log(req.body)
+    res.redirect('/journal/home')
+}
