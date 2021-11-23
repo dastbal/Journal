@@ -13,5 +13,10 @@
 
 
 
-We are having problems  adding  the session, all work in the machine creating the session but on  heroku don't work.
+We are having problems  adding  the session.
+ all work in local.
+ but in  heroku don't work the database show the following ;
+  Only in heroku shows that buffering timed out after 10000ms.
+ we spend a lot of time  fixing. but we cannot yet.
+
 

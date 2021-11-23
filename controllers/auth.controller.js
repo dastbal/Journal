@@ -41,6 +41,15 @@ exports.postLogin  = async (req,res,next)=>{
         
     }
 }
+exports.postLogout = (req,res,next)=>{
+    req.session.destroy((e)=>{
+        console.log('destroy')
+        console.log(e)
+        res.redirect('/');
+
+    })
+    
+}
 exports.getSignup  = (req,res,next)=>{
     res.render('auth/signup',{
         path: '/signup',
