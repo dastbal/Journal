@@ -1,0 +1,25 @@
+
+.icons{
+    padding:0px 20px;
+    padding-top: 5px;
+    border-radius:6mm;
+    width:90px;
+    height:90px;
+}
+.main-nav-list{
+    display: flex;
+    flex-direction: row;
+}
+li{
+    list-style: none;
+}
+.main-header__item{
+    padding:0px 20px;
+}
+.extraLogo{
+    font-size: 60px;
+}
+footer{
+    display: block;
+    align-items: center;
+}
