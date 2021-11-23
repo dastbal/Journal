@@ -35,13 +35,17 @@ label{
     
 }
 .btn{
+    background-color: var(--color-btn-blue) ;
     margin: 0.2rem 0;
     border-radius: 0.4rem;
     width: var(--btn-width);
     height: var(--btn-height);
     border: none;
-    background-color: var(--color-btn-blue) ;
     color: white;
     font-weight: bold;
     
 }
+    .logout{
+        background-color: var(--color-btn-red) ;
+        
+    }

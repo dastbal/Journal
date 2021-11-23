@@ -1,4 +1,6 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+
 </head>
 
 <body>
@@ -18,7 +20,15 @@
                     <%= user.aboutMe %>
                 
                 <% } %>
-            <a href="/edit-profile">Edit</a>     
+                <div>
+                    
+                    <a href="/edit-profile">Edit</a>    
+                </div>
+                <form class="form-control" action="/logout" method="post">
+                    <input type="hidden" value="" name="_csrf">
+                <button  type="submit" class="btn logout">  Logout</button>
+            </form>
+ 
         
         
         

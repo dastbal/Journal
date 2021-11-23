@@ -9,6 +9,9 @@ const validatorHandler = require(`../middlewares/validator.handler`)
 router.get('/',
     authController.getLogin
     )
+router.post('/logout',
+    authController.postLogout
+    )
 router.post('/',
     validatorHandler(loginUserSchema, 'body','login'),
     authController.postLogin
