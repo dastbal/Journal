@@ -6,6 +6,7 @@
     border-top: solid 1px var(--color-gray);
     position: fixed;
     bottom: 0;
+    background-color: var(--color-background-white);
 
 }
 .icons  {
@@ -23,7 +24,7 @@
 .filter .fas{
     color: var(--color-filer-icon);
     font-size: 30px;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 
 }
 li{
