@@ -1,7 +1,13 @@
-exports.getHome  = (req,res,next)=>{
+const RegisterService = require('../services/register.service');
+
+const registerService = new RegisterService()
+exports.getHome  =  async (req,res,next)=>{
+    const sheets = await registerService.find(req.session.user)
+
     res.render('home/home',{
         path: '/',
         pageTitle: 'Home',
+        sheets: sheets
     })
 }
 exports.getSpiritual  = (req,res,next)=>{

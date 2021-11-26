@@ -8,90 +8,63 @@
     
     <main>
         <%- include('../includes/title.ejs') %>
-        <h3 class="">home</h3>
         <%- include('../includes/filter.ejs') %>
         <div class="journal">
-            <div class="journal-day">
-                <div class="joural-day-title">
-                    <h3>El gran dia</h3>
-                    <div class="journal-info">
-
-                        <span class="place">Guayaquil</span>
-                        <span>   -   </span>
+            <% sheets.forEach(sheet => { %>
+             
+                <div class="journal-day">
+                    <div class="joural-day-title">
+                        <h3><%= sheet.title %> </h3>
+                        <div class="journal-info">
+                            
+                            <span class="place"><%= sheet.place %></span>
+                            <span>   -   </span>
                         
-                        <span class="date">20 April</span>
+                            <span class="date"><%= sheet.date %></span>
                     </div>
                 </div>
                 <div class="journal-topic">
 
-                    <h4>normal</h4>
+                    <h4>Normal</h4>
                     <p>
-                        este  dia  termine todo mis debres (exemple) ndsjsjns  sjsjsjjs jsjj sjjjjjjjs jjs jsj s sj sjjjjs  ssjs 
+                        <%= sheet.yourDay %>
                     </p>
                 </div>
                 <div class="journal-topic">
 
-                    <h4>normal</h4>
+                    <h4>Sad</h4>
                     <p>
-                        este  dia  termine todo mis debres (exemple) ndsjsjns  sjsjsjjs jsjj sjjjjjjjs jjs jsj s sj sjjjjs  ssjs 
+                        <%= sheet.sadExp %>
                     </p>
                 </div>
                 <div class="journal-topic">
 
-                    <h4>normal</h4>
+                    <h4> Happy</h4>
                     <p>
-                        este  dia  termine todo mis debres (exemple) ndsjsjns  sjsjsjjs jsjj sjjjjjjjs jjs jsj s sj sjjjjs  ssjs 
+                        <%= sheet.happyExp %>
                     </p>
                 </div>
                 <div class="journal-topic">
 
-                    <h4>normal</h4>
+                    <h4>Spirit</h4>
                     <p>
-                        este  dia  termine todo mis debres (exemple)
+                        <%= sheet.spiritExp %>
                     </p>
                 </div>
+                <div class="journal-topic">
+
+                    <h4>Lessons Learned</h4>
+                    <p>
+                        <%= sheet.lessonLearned %>
+                    </p>
+                </div>
+                
                 <div class="action centered">
                     <a class="btn-a " href="/journal/register"> Edit</a>
                 </div>
                 
             </div>
-
-<!-- only for view purpose -->
-
-
-
-            <div class="journal-day">
-                <div class="joural-day-title">
-                    <h3>El gran dia</h3>
-                    <div class="journal-info">
-
-                        <span class="place">Guayaquil</span>
-                        <span>   -   </span>
-                        
-                        <span class="date">20 April</span>
-                    </div>
-                </div>
-                <div class="journal-topic">
-
-                    <h4>normal</h4>
-                    <p>
-                        este  dia  termine todo mis debres (exemple)
-                    </p>
-                </div>
-                <div class="journal-topic">
-
-                    <h4>normal</h4>
-                    <p>
-                        este  dia  termine todo mis debres (exemple)
-                    </p>
-                </div>
-                <div class="action centered">
-                    <a class="btn-a " href="/journal/register"> Edit</a>
-                </div>
-                
-            </div>
-<!-- only for view purpose -->
-
+            <% }) %>
 
         </div>
        
