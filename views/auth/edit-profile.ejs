@@ -1,14 +1,23 @@
+<%- include('../includes/title.ejs') %>
 <%- include('../includes/head.ejs') %>
+
 </head>
 
 <body>
 
     <main>
         <h3>Profile</h3>
-        <h2>Username</h2>
+        <h2> <%- userName %> </h2>
+        <form method="post" action="/updated">
+                    <div class="form-control">    
+                        <h3>About me</h3>
+                        <label for="aboutMe">
+                            <textarea name="aboutMe" id="aboutMe" onfocus="this.value=''; setbg('#e5fff3');"
+                                onblur="setbg('white')"><%- user.aboutMe %></textarea> </label>
+                    </div>
+                <button class="btn" type="submit"> Edit Profile</button>
+        </form>
         <img src="https://picsum.photos/536/354" alt="random" width="50" height="50">
-        <div class="p-info">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ducimus, animi in numquam corporis ad perspiciatis architecto, impedit dolores a sint inventore, facere tempora praesentium necessitatibus itaque laboriosam tenetur enim?</div>
     </main>
 <%- include('../includes/navigation.ejs') %>
 <%- include('../includes/end.ejs') %>

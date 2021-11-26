@@ -76,9 +76,7 @@ exports.getEditProfile  = (req,res,next)=>{
     res.render('auth/edit-profile',{
         path: '/edit-profile',
         pageTitle: 'Edit Profile',
-        oldInput:{
-            userName,
-        },
+        user : req.session.user,
        // errorMessage : null ,
         //oldInput:null,
     })
