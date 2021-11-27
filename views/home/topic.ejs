@@ -1,0 +1,77 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/home.css">
+
+</head>
+
+<body>
+    
+    <main>
+        <%- include('../includes/title.ejs') %>
+        <%- include('../includes/filter.ejs') %>
+        <div class="journal">
+            <% sheets.forEach(sheet => { %>
+             
+                <div class="journal-day">
+                    <div class="joural-day-title">
+                        <h3><%= sheet.title %> </h3>
+                        <div class="journal-info">
+                            
+                            <span class="place"><%= sheet.place %></span>
+                            <span>   -   </span>
+                        
+                            <span class="date"> 25 April</span>
+                    </div>
+                </div>
+                <div class="journal-topic">
+
+                    <h4> <%= pageTitle %> </h4>
+                    <% if (pageTitle =='Spiritual') { %>
+                     
+                        <p>
+                             <%= sheet.spiritExp %>  
+                            
+                        </p>
+                    <% } %>
+                    <% if (pageTitle =='Sad') { %>
+                     
+                        <p>
+                             <%= sheet.sadExp %>  
+                            
+                        </p>
+                    <% } %>
+                    <% if (pageTitle =='Normal') { %>
+                     
+                        <p>
+                             <%= sheet.yourDay %>  
+                            
+                        </p>
+                    <% } %>
+                    <% if (pageTitle =='Learned') { %>
+                     
+                        <p>
+                             <%= sheet.lessonLearned %>  
+                            
+                        </p>
+                    <% } %>
+                    <% if (pageTitle =='Joy') { %>
+                     
+                        <p>
+                             <%= sheet.happyExp %>  
+                            
+                        </p>
+                    <% } %>
+                </div>
+
+                   
+    
+                
+            </div>
+            <% }) %>
+
+        </div>
+       
+    </main>
+    <%- include('../includes/navigation.ejs') %>
+
+<%- include('../includes/end.ejs') %>
