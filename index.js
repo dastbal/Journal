@@ -19,6 +19,7 @@ const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/er
 
 
 
+
 const port = process.env.PORT || 3000;
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
@@ -46,7 +47,7 @@ connectMongoDB().then( async (x)=>{
         
 console.log('session' )
 app.use(session({
-  secret: 'journal',
+  secret: process.env.SESSION_SECRET || config.sessionSecret,
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({mongoUrl: MONGODB_URL})
