@@ -1,12 +1,72 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/home.css">
+
 </head>
 
 <body>
     
     <main>
         <%- include('../includes/title.ejs') %>
-        <h3>home</h3>
         <%- include('../includes/filter.ejs') %>
+        <div class="journal">
+            <% sheets.forEach(sheet => { %>
+             
+                <div class="journal-day">
+                    <div class="joural-day-title">
+                        <h3><%= sheet.title %> </h3>
+                        <div class="journal-info">
+                            
+                            <span class="place"><%= sheet.place %></span>
+                            <span>   -   </span>
+                        
+                            <span class="date"> 25 April</span>
+                    </div>
+                </div>
+                <div class="journal-topic">
+
+                    <h4>Normal</h4>
+                    <p>
+                        <%= sheet.yourDay %>
+                    </p>
+                </div>
+                <div class="journal-topic">
+
+                    <h4>Sad</h4>
+                    <p>
+                        <%= sheet.sadExp %>
+                    </p>
+                </div>
+                <div class="journal-topic">
+
+                    <h4> Happy</h4>
+                    <p>
+                        <%= sheet.happyExp %>
+                    </p>
+                </div>
+                <div class="journal-topic">
+
+                    <h4>Spirit</h4>
+                    <p>
+                        <%= sheet.spiritExp %>
+                    </p>
+                </div>
+                <div class="journal-topic">
+
+                    <h4>Lessons Learned</h4>
+                    <p>
+                        <%= sheet.lessonLearned %>
+                    </p>
+                </div>
+                
+                <div class="action centered">
+                    <a class="btn-a " href="/journal/register"> Edit</a>
+                </div>
+                
+            </div>
+            <% }) %>
+
+        </div>
        
     </main>
     <%- include('../includes/navigation.ejs') %>

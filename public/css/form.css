@@ -45,6 +45,21 @@ label{
     font-weight: bold;
     
 }
+.btn-a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center;
+    background-color: blue ;
+    margin: 0.2rem 0;
+    border-radius: 0.4rem;
+    width: var(--btn-width);
+    height: var(--btn-height);
+    border: none;
+    color: white;
+    font-weight: bold;
+    
+}
     .logout{
         background-color: var(--color-btn-red) ;
         

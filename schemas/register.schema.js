@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 
+const title  = Joi.string("")
 const spiritExp  = Joi.string("")
 const happyExp  = Joi.string("")
 const yourDay  = Joi.string("")
@@ -12,6 +13,7 @@ const lessonLearned = Joi.string("")
 
 
 const createRegisterSchema = Joi.object({
+    title: title,
     spiritExp: spiritExp,
     happyExp: happyExp,
     yourDay: yourDay,
@@ -24,6 +26,7 @@ const createRegisterSchema = Joi.object({
 })
 
 const updateRegisterSchema = Joi.object({
+    title: title,
     spiritExp: spiritExp,
     happyExp: happyExp,
     yourDay: yourDay,

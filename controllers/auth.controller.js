@@ -18,8 +18,7 @@ exports.postLogin  = async (req,res,next)=>{
     try{
         // to verify is the account exist if not  notify a error
         const user = await service.findOne(email )
-        try{ if(!user){throw new Error()  }
-        }catch(e){throw new Error("Invalid Email")}
+        if(!user){throw new Error("Invalid Email")}
 
         // verify is a password is valid
         const doMatch = await bcrypt.compare(password, user.password);
@@ -63,8 +62,7 @@ exports.postSignup  = async (req,res,next)=>{
     try {
         // to verify if exist the email
         const user = await service.findOne(req.body.email )
-        try{ if(user){throw new Error()  }
-        }catch(e){ throw new Error("E-mail exists already, please pick a different one")  }
+        if(user){ throw new Error("E-mail exists already, please pick a different one")  }
 
         // to create the new user
         await service.create(req.body)
@@ -72,14 +70,13 @@ exports.postSignup  = async (req,res,next)=>{
     } catch (error) {
         return next(new boom.badRequest(error))
     }
+    
 }
 exports.getEditProfile  = (req,res,next)=>{
     res.render('auth/edit-profile',{
         path: '/edit-profile',
         pageTitle: 'Edit Profile',
-        oldInput:{
-            userName,
-        },
+        user : req.session.user,
        // errorMessage : null ,
         //oldInput:null,
     })

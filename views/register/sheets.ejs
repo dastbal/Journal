@@ -9,8 +9,16 @@
     </script>
 
     <main>
+        <%- include('../includes/title.ejs') %>
+
 
         <form action="/journal/register/create-sheet" method="POST">
+            <div class="form-control">
+                <h2>Title</h2>
+                <label for="title">
+                    <input type="title" required name="title" id="title" placeholder="A great day" value="">
+                </label>
+            </div>
             <div class="form-control">
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date">

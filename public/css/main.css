@@ -16,13 +16,16 @@
     --btn-height:36px;
     --input-height:40px;
 }
+main{
+	padding-bottom: 5rem;
+}
 body{
     background-color: var(--color-background-white);
     width: 100%;
 }
 .title-journal{
     border-bottom: solid 1px rgba(0, 0, 0, 0.213);
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
     font-family: 'Reenie Beanie';
     font-size: 35px;
     font-weight: 300;
