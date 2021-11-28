@@ -48,7 +48,7 @@ connectMongoDB().then( async (x)=>{
 console.log('session' )
 app.use(session({
   secret: process.env.SESSION_SECRET || config.sessionSecret,
-  resave: false,
+  resave: true,
   saveUninitialized: false,
   store: MongoStore.create({mongoUrl: MONGODB_URL})
 }

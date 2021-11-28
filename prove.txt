@@ -13,10 +13,8 @@
 
 
 
-We are having problems  adding  the session.
- all work in local.
- but in  heroku don't work the database show the following ;
-  Only in heroku shows that buffering timed out after 10000ms.
- we spend a lot of time  fixing. but we cannot yet.
+All it is working
+we fixed the problem with  heroku at config var we  used a wrong  Url. It was dificult
+to find that mistake we spendt a lot of hours only with that.
 
 
