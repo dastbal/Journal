@@ -81,3 +81,12 @@ exports.getEditProfile  = (req,res,next)=>{
         //oldInput:null,
     })
 }
+// exports.postEditProfile  = (req,res,next)=>{
+//     res.render('auth/edit-profile',{
+//         path: '/edit-profile',
+//         pageTitle: 'Edit Profile',
+//         user : req.session.user,
+//         // errorMessage : null ,
+//         //oldInput:null,
+//     })
+// }}

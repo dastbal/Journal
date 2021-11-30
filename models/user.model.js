@@ -25,6 +25,9 @@ const userSchema = new Schema({
     aboutMe: {
         type: String,
     },
+    imageUrl:{
+        type:String,
+    },
     resetToken: String,
     resetTokenExpiration: Date,
     
