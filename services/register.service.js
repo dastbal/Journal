@@ -18,13 +18,20 @@ class RegisterService {
         }
     }
     async find(user){
-        let sheets =  await Register.find({user:user})
+        let sheets =  await Register.find({user:user}).sort({'createdAt': -1})
         let x = [...sheets]
         x = x.forEach(sheet => {
             
         });
         
         return sheets
+
+    }
+    async countSheets(user){
+        let count  =  await Register.countDocuments({user:user})
+        
+        
+        return count
 
     }
   

@@ -1,0 +1,23 @@
+.user{
+    margin: 2%;
+
+}
+h2{
+    font-weight: bold;
+}
+.user-head{
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: row;
+    justify-content: flex-start;
+
+}
+.user-img{
+    width: 40px;
+
+
+}
+img{
+    width: 100%;
+
+}

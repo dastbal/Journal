@@ -1,9 +1,11 @@
 .journal-day{
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(67, 53, 191, 0.186);
     padding: 0.5rem 2%;
-    border-top: 1px solid var(--color-gray) ;
-    border-bottom: 1px solid var(--color-gray) ;
-    margin: 0.5rem 0;
+    border-left: 3px solid rgb(0, 0, 255);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.522);
+
+    margin: 0.5rem  2%;
+    margin-bottom: 1.5rem;
 }
 .joural-day-title{
     margin-bottom: 0.6rem;

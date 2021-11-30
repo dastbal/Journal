@@ -9,7 +9,12 @@
     <main>
         <%- include('../includes/title.ejs') %>
         <%- include('../includes/filter.ejs') %>
+        
         <div class="journal">
+            <% if ( count == 0) { %>
+                Begin your Journal!
+             
+            <% } %>
             <% sheets.forEach(sheet => { %>
              
                 <div class="journal-day">

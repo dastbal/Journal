@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 
 
-const port = process.env.PORT || 3000;
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const NAME = encodeURIComponent(config.dbName);
@@ -16,29 +15,10 @@ const options = {
 };
 
 // funcion  to connect to mongodb
-const connectMongoDB =  (app)=>{
-    try{
-        const connection = mongoose.connect(MONGODB_URL, options, ()=>{
-            console.log('mongoDB connected')
-            app.listen(port,()=>{ console.log('app listen ' )})
-        }
-
-            )
-
-        
-
-
-        
-        
-
-    }catch(e){
-        app.listen(port,()=>{
-            console.log('mongoDB not connected ---->' , e)
-        })
-        
-        
-    }
-}
+const connectMongoDB = async  ()=>   {
+    const connected   = await mongoose.connect(MONGODB_URL, options)
+    return connected
+  }
 
 
 module.exports = { connectMongoDB ,MONGODB_URL }

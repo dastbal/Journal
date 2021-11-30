@@ -1,75 +1,17 @@
 const express = require('express');
 const path  = require('path');
 const app = express();
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 
-const  config = require('./config/config');
+//const csrf = require('csurf')
 
-//const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
+const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
 const routerJournal = require('./routes')
-const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
-//const User = require('./models/user.model');
-
-
-
-
-
-
-
 const port = process.env.PORT || 3000;
-const USER = encodeURIComponent(config.dbUser);
-const PASSWORD = encodeURIComponent(config.dbPassword);
-const NAME = encodeURIComponent(config.dbName);
-const MONGODB_URL = process.env.MONGODB_URL  || `mongodb+srv://${USER}:${PASSWORD}@cluster0.gimcb.mongodb.net/${NAME}?retryWrites=true&w=majority`
-const options = {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    
-};
-
-// funcion  to connect to mongodb
-const connectMongoDB = async  ()=>   {
-  return mongoose.connect(MONGODB_URL, options) 
-}
-
-connectMongoDB().then( async (x)=>{
-  app.listen(port,()=>{ console.log('app listen ' )})
-  //console.log(x)
- 
-}) .catch(e=>{
-              app.listen(port,()=>{ console.log('mongoDB not connected ---->' , e)})
-          })
-        
-        
-console.log('session' )
-app.use(session({
-  secret: process.env.SESSION_SECRET || config.sessionSecret,
-  resave: true,
-  saveUninitialized: false,
-  store: MongoStore.create({mongoUrl: MONGODB_URL})
-}
-))
-
-
-app.use(session({
-  secret: 'journal',
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({mongoUrl: MONGODB_URL})
-}
-))
-
-app.set('view engine', 'ejs');
-app.set('views','views');
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(express.json());
-app.use(express.static(path.join(__dirname,"public")));
-
-
+const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
 
 // cors 
 
@@ -79,17 +21,36 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET || config.sessionSecret,
+  resave: true,
+  saveUninitialized: true,
+  store: MongoStore.create({mongoUrl: MONGODB_URL})
+}
+))
 
+
+//app.use(csrf())
+app.set('view engine', 'ejs');
+app.set('views','views');
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.json());
+app.use(express.static(path.join(__dirname,"public")));
 
 
 
 // global variables
 app.use( (req,res,next)=>{
   res.locals.isLoggedIn = req.session.isLoggedIn;
-  //res.locals.csrfToken =  req.csrfToken()
+  //res.locals.cs =   req.csrfToken()
   res.locals.userName =  req.session.userName
   next()
 })
+
+
+
+
+
 
 //  routes 
 routerJournal(app)
@@ -103,6 +64,12 @@ app.use(errorHandler)
 
 
 // start  the server port =3000
+connectMongoDB().then( async ()=>{
+  app.listen(port,()=>{ console.log('app listen ' )})
+  
+}) .catch(e=>{
+  app.listen(port,()=>{ console.log('mongoDB not connected ---->' , e)})
+})
 
 
 

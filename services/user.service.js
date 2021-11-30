@@ -30,6 +30,11 @@ class UserService {
         
         return user
     }
+    async find( ) {
+        const users =  await User.find()
+        
+        return users
+    }
   
     
   }

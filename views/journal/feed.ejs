@@ -1,4 +1,6 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/feed.css">
+
 </head>
 
 <body>
@@ -6,7 +8,29 @@
     <main>
         <%- include('../includes/title.ejs') %>
 
-        <h3>Feed</h3>
+        <h2>Know  people that love to write their own journal</h2>
+
+        <% users.forEach(user => { %>
+            <div class="user">
+                <div class="user-head">
+                    <div class="user-img">
+                        <img src="https://picsum.photos/200"  alt="">
+
+                    </div>
+                    <div class="user-title">
+                        <h2><%= user.userName %> </h2>
+                    </div>
+
+                </div>
+                <div class="user-body">
+                    <p>
+
+                        <%= user.aboutMe %> 
+                    </p>
+                </div>
+            </div>
+         
+        <% }) %>
        
     </main>
     <%- include('../includes/navigation.ejs') %>

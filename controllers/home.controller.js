@@ -3,13 +3,15 @@ const RegisterService = require('../services/register.service');
 const registerService = new RegisterService()
 exports.getHome  =  async (req,res,next)=>{
     const sheets = await registerService.find(req.session.user);
+    const count = await registerService.countSheets(req.session.user);
     req.session.sheets = sheets;
 
 
     res.render('home/home',{
         path: '/',
         pageTitle: 'Home',
-        sheets: sheets
+        sheets: sheets,
+        count: count,
     })
 }
 exports.getSpiritual  = (req,res,next)=>{
