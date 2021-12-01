@@ -1,10 +1,32 @@
+.fa-place-of-worship:hover{
+    color: rgb(15, 228, 22);
+
+}
+.fa-laugh-beam:hover{
+    color: rgb(189, 228, 15);
+    
+}
+.fa-smile:hover{
+    color: rgb(225, 16, 16);
+    
+}
+.fa-book:hover{
+    color:  rgb(225, 82, 16);
+    
+}
+.fa-cry:hover{
+    color:rgb(18, 8, 197);
+
+}
+
+
 .journal-day{
     background-color: rgba(67, 53, 191, 0.186);
     padding: 0.5rem 2%;
     border-left: 3px solid rgb(0, 0, 255);
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.522);
 
-    margin: 0.5rem  2%;
+    margin: 0  3%;
     margin-bottom: 1.5rem;
 }
 .joural-day-title{

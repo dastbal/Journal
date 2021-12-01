@@ -14,7 +14,7 @@ const routerJournal = require('./routes')
 const port = process.env.PORT || 3000;
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
 
-// cors 
+//           ---------------------------------  cors       ---------------------------------
 
 const corsOptions = {
   origin: "https://still-brushlands-88997.herokuapp.com/",
@@ -32,7 +32,7 @@ app.use(session({
 
 
 
-
+//                                 ---------------------  UPLOADING IMAGES    -----------------
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -83,7 +83,7 @@ app.use(express.static(path.join(__dirname,"public")));
 
 
 
-// global variables
+//                    ------------------------ global variables  ---------------------------------
 app.use( (req,res,next)=>{
   res.locals.isLoggedIn = req.session.isLoggedIn;
   //res.locals.cs =   req.csrfToken()
@@ -96,10 +96,10 @@ app.use( (req,res,next)=>{
 
 
 
-//  routes 
+//                --------------------------------- routes  ---------------------------------
 routerJournal(app)
 
-// middlewares of to handle the errors
+//                ---------------------------------  middlewares of to handle the errors  ---------------------------------
 app.use(logErrors)
 app.use(boomErrorHandler)
 app.use(errorHandler)
@@ -107,7 +107,7 @@ app.use(errorHandler)
 
 
 
-// start  the server port =3000
+//               ---------------------------------  start  the server port =3000  ---------------------------------
 connectMongoDB().then( async ()=>{
   app.listen(port,()=>{ console.log('app listen ' )})
   
