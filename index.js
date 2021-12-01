@@ -6,8 +6,8 @@ const cors = require('cors')
 const session = require('express-session')
 const multer = require('multer')
 const MongoStore = require('connect-mongo')
-
-//const csrf = require('csurf')
+const config =require('./config/config')
+//const csrf = require('csurf')()
 
 const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
 const routerJournal = require('./routes')

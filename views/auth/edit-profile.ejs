@@ -9,18 +9,18 @@
         <h3>Profile</h3>
         <h2> <%- userName %> </h2>
         <form method="post" action="/updated">
-                    <!-- <div class="form-control">
+                    <div class="form-control">
                         <label for="image">Image</label>
                         <input 
                             type="file" 
                             name="image" 
                             id="image" >
-                    </div> -->
+                    </div>
                     <div class="form-control">    
                         <h3>About me</h3>
                         <label for="aboutMe">
                             <textarea name="aboutMe" id="aboutMe" onfocus="this.value=''; setbg('#e5fff3');"
-                                onblur="setbg('white')"><%- user.aboutMe %></textarea> </label>
+                                onblur="setbg('white')"><%= user.aboutMe %></textarea> </label>
                     </div>
                 <button class="btn" type="submit"> Edit Profile</button>
         </form>

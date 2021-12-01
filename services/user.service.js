@@ -23,6 +23,16 @@ class UserService {
             next(new boom.serverUnavailable('Please try more late.'))
         }
     }
+
+    async update(user, changes) {
+        try{
+
+            user = {...user, ...changes}
+            await user.save();
+        }catch(e){
+            next(new boom.serverUnavailable('Please try more late.'))
+        }
+    }
   
   
     async findOne(email ) {
