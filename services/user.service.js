@@ -26,7 +26,12 @@ class UserService {
   
   
     async findOne(email ) {
-        const user =  await User.findOne({email:email})
+        const user =  await User.findOne({email:email} )
+        
+        return user
+    }
+    async findById(id) {
+        const user =  await User.findById(id)
         
         return user
     }

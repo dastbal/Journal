@@ -12,16 +12,18 @@
 
         <% users.forEach(user => { %>
             <div class="user">
-                <div class="user-head">
+                <a class="user-head" href="/journal/feed/<%= user._id %>">
                     <div class="user-img">
-                        <img src="https://picsum.photos/200"  alt="">
-
+                        <img src="<% if (user.imageUrl) { %>
+                            <%= user.imageUrl %> 
+                            <% } else { %>https://picsum.photos/500<% } %>"  alt="profile">
+5
                     </div>
                     <div class="user-title">
                         <h2><%= user.userName %> </h2>
                     </div>
 
-                </div>
+                </a>
                 <div class="user-body">
                     <p>
 

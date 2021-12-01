@@ -21,9 +21,9 @@
 
 
 .journal-day{
-    background-color: rgba(67, 53, 191, 0.186);
+    background-color: var(--color-background-journal);
     padding: 0.5rem 2%;
-    border-left: 3px solid rgb(0, 0, 255);
+    border-left: 4px solid rgb(0, 0, 255);
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.522);
 
     margin: 0  3%;

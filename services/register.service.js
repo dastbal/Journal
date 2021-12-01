@@ -18,11 +18,9 @@ class RegisterService {
         }
     }
     async find(user){
-        let sheets =  await Register.find({user:user}).sort({'createdAt': -1})
+        let sheets =  await Register.find({user:user}).sort({'createdAt': -1}).populate('user')
         let x = [...sheets]
-        x = x.forEach(sheet => {
-            
-        });
+       
         
         return sheets
 
