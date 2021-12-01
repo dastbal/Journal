@@ -8,11 +8,28 @@
     
     <main>
         <%- include('../includes/title.ejs') %>
-        <%- include('../includes/filter.ejs') %>
+        <%- include('../includes/filter.ejs',{pageTitle:pageTitle}) %>
         <div class="journal">
             <% sheets.forEach(sheet => { %>
-             
-                <div class="journal-day">
+                
+                <div class="journal-day" 
+                <% if (pageTitle =='Spiritual') { %>
+                    style="border-color: rgb(15, 228, 22) ;"
+                    <% } %>
+                    <% if (pageTitle =='Sad') { %>
+                        style="border-color: rgb(18, 8, 197) ;"
+                        <% } %>
+                        <% if (pageTitle =='Normal') { %>
+                            style="border-color: rgb(225, 16, 16) ;"
+                            <% } %>
+                            <% if (pageTitle =='Learned') { %>
+                                style="border-color: rgb(225, 82, 16) ;"
+                                <% } %>
+                                <% if (pageTitle =='Joy') { %>
+                                    style="border-color: rgb(189, 228, 15) ;"
+                <% } %>
+
+                >
                     <div class="joural-day-title">
                         <h3><%= sheet.title %> </h3>
                         <div class="journal-info">
@@ -23,7 +40,7 @@
                             <span class="date"> 25 April</span>
                     </div>
                 </div>
-                <div class="journal-topic">
+                <div class="journal-topic" >
 
                     <% if (pageTitle =='Spiritual') { %>
                      

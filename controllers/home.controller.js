@@ -17,7 +17,6 @@ exports.getHome  =  async (req,res,next)=>{
 exports.getSpiritual  = (req,res,next)=>{
     
     res.render('home/topic',{
-        path: '/',
         pageTitle: 'Spiritual',
         sheets: req.session.sheets,
     })

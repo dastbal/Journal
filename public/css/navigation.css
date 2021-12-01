@@ -27,6 +27,20 @@
     padding: 0.5rem 0;
 
 }
+
+.filter{
+    margin: 1rem 0;
+}
+.filter a{
+    text-align: center;
+    display: block;
+    width: 100%;
+
+}
+.filter a:hover{
+    background-color: rgba(201, 201, 201, 0.508);
+
+}
 li{
     list-style: none;
 }
