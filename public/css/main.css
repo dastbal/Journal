@@ -54,3 +54,6 @@ h1{
 .line  hr{
     width: 40%;
 }
+.fas > span{
+    font-size: 0.8rem;
+}
