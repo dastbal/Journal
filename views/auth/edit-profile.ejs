@@ -1,5 +1,7 @@
 <%- include('../includes/title.ejs') %>
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/edit-profile.css">
+<link rel="stylesheet" href="/css/form.css">
 
 </head>
 
@@ -8,7 +10,7 @@
     <main>
         <h3>Profile</h3>
         <h2> <%- userName %> </h2>
-        <form method="post" action="/updated">
+        <form method="post" action="/edit-profile">
                     <div class="form-control">
                         <label for="image">Image</label>
                         <input 
@@ -24,7 +26,6 @@
                     </div>
                 <button class="btn" type="submit"> Edit Profile</button>
         </form>
-        <img src="https://picsum.photos/536/354" alt="random" width="50" height="50">
     </main>
 <%- include('../includes/navigation.ejs') %>
 <%- include('../includes/end.ejs') %>

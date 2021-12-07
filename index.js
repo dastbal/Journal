@@ -58,6 +58,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 );
