@@ -10,13 +10,14 @@ exports.getHome  =  async (req,res,next)=>{
     res.render('home/home',{
         path: '/',
         pageTitle: 'Home',
-        sheets: sheets,
+        sheets: req.session.sheets,
         count: count,
     })
 }
 exports.getSpiritual  = (req,res,next)=>{
     
     res.render('home/topic',{
+        path: '/',
         pageTitle: 'Spiritual',
         sheets: req.session.sheets,
     })
