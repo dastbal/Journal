@@ -1,7 +1,7 @@
 const UserService = require('../services/user.service');
 const boom = require('@hapi/boom')
 const bcrypt = require('bcryptjs');
-//const crypto = require('crypto');
+const crypto = require('crypto');
 
 const service  = new UserService()
 
@@ -81,12 +81,20 @@ exports.getEditProfile  = (req,res,next)=>{
         //oldInput:null,
     })
 }
-// exports.postEditProfile  = (req,res,next)=>{
-//     res.render('auth/edit-profile',{
-//         path: '/edit-profile',
-//         pageTitle: 'Edit Profile',
-//         user : req.session.user,
-//         // errorMessage : null ,
-//         //oldInput:null,
-//     })
-// }}
+//exports.postEditProfile  = async (req,res,next)=>{
+  //      const image = req.file;
+   //     const imageUrl = image.path;
+      
+  //  console.log(imageUrl);
+  //  const perInfo = {aboutMe:req.body.aboutMe , imageUrl:req.file.image.path }
+    //try {
+    
+        
+      //  await userService.update(req.session.user, perInfo).then(()=>{
+        //    res.redirect('/journal/profile')
+        //})
+    //} catch (error) {
+       // console.log('errores --->',error)
+
+    //}
+//}

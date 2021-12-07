@@ -1,5 +1,6 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/profile.css">
 
 </head>
 
@@ -12,7 +13,7 @@
         <h1><%=user.userName %></h1>
         <h2><%=user.email %></h2>
         <div class="card__image">
-            <img src="<%= user.imageUrl %>" alt="profile">
+            <img src="/<%= user.imageUrl %>" alt="profile">
         </div>
         <div class="p-info">
              <% if (!user.aboutMe) { %>
@@ -22,7 +23,7 @@
                     <%= user.aboutMe %>
                 
                 <% } %>
-                <div>
+                <div class="editt">
                     
                     <a href="/edit-profile">Edit</a>    
                 </div>

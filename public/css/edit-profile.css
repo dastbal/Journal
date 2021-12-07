@@ -1,0 +1,85 @@
+@import url('./reset.css');
+@import url('./navigation.css');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+
+:root{
+    --color-btn-blue : #053CFF;
+    --color-filer-icon : #000000;
+    --color-btn-red : #FF2C2C;
+    --color-text-blue : #1F67F1;
+    --color-gray : #6B6B6B;
+    --color-background-white : #FAF9F9;
+    --color-background-input : #F1EEEE;
+
+
+    --btn-width:70%;
+    --btn-height:36px;
+    --input-height:40px;
+}
+form{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+textarea{
+
+    width: 100%;
+    
+    border-radius: 0.4rem;
+    resize: none;
+    height: 100px;
+    border: var(--color-gray) 1px solid;
+    background-color: var(--color-background-input);
+}
+input{
+    width: 100%;
+    
+    border-radius: 0.4rem;
+    height: var(--input-height);
+    border: var(--color-gray) 1px solid;
+    background-color: var(--color-background-input);
+    
+    
+}
+label{
+    display: block;
+    
+}
+.form-control{
+    margin: 0.2rem 0;
+    width: var(--btn-width);
+    
+    
+}
+.btn{
+    background-color: var(--color-btn-blue) ;
+    margin: 0.2rem 0;
+    border-radius: 0.4rem;
+    width: var(--btn-width);
+    height: var(--btn-height);
+    border: none;
+    color: white;
+    font-weight: bold;
+    
+}
+.btn-a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center;
+    background-color: blue ;
+    margin: 0.2rem 0;
+    border-radius: 0.4rem;
+    width: var(--btn-width);
+    height: var(--btn-height);
+    border: none;
+    color: white;
+    font-weight: bold;
+    
+}
+    .logout{
+        background-color: var(--color-btn-red) ;
+        
+    }

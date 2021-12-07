@@ -26,7 +26,6 @@ class UserService {
 
     async update(user, changes) {
         try{
-
             user = {...user, ...changes}
             await user.save();
         }catch(e){

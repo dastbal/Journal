@@ -28,6 +28,8 @@ router.get('/edit-profile',
     authController.getEditProfile
     
     )
-
+router.post('/edit-profile',
+    authController.postEditProfile
+    )
 
 module.exports = router;
