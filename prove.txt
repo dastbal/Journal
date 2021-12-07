@@ -14,7 +14,11 @@
 
 
 All it is working
-we fixed the problem with  heroku at config var we  used a wrong  Url. It was dificult
-to find that mistake we spendt a lot of hours only with that.
+
+This week we had problems implementing   the csrf tokens, we will try again thos week.
+Only we need to add few  litle things such as
+
+reset password
+button to delete some things . .
 
 

@@ -15,7 +15,8 @@ class UserService {
 
             const password =  await bcrypt.hash(data.password, 12)
             const confirmPassword =  await bcrypt.hash(data.confirmPassword, 12)
-            const dataUpdated = {...data, password, confirmPassword}
+            const imageUrl =  'https://picsum.photos/200'
+            const dataUpdated = {...data, password, confirmPassword , imageUrl}
             //console.log(dataUpdated)
             const user = new User( dataUpdated)
             await user.save();
@@ -35,7 +36,12 @@ class UserService {
   
   
     async findOne(email ) {
-        const user =  await User.findOne({email:email})
+        const user =  await User.findOne({email:email} )
+        
+        return user
+    }
+    async findById(id) {
+        const user =  await User.findById(id)
         
         return user
     }

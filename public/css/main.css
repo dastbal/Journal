@@ -10,6 +10,7 @@
     --color-gray : #6B6B6B;
     --color-background-white : #FAF9F9;
     --color-background-input : #F1EEEE;
+    --color-background-journal : rgba(175, 232, 232, 0.152);
 
 
     --btn-width:70%;
@@ -52,4 +53,7 @@ h1{
 }
 .line  hr{
     width: 40%;
+}
+.fas > span{
+    font-size: 0.8rem;
 }

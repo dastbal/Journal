@@ -13,6 +13,9 @@ router.use('/home', homeRouter)
 router.get('/feed',
 journalController.getFeed
 )
+router.get('/feed/:id',
+journalController.getUserName
+)
 router.get('/profile',
 journalController.getProfile
 )

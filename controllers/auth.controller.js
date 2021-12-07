@@ -1,7 +1,19 @@
 const UserService = require('../services/user.service');
 const boom = require('@hapi/boom')
 const bcrypt = require('bcryptjs');
+<<<<<<< HEAD
 const crypto = require('crypto');
+=======
+var nodemailer = require('nodemailer');
+var config = require('./../config/config');
+var sgTransport = require('nodemailer-sendgrid-transport');
+//const crypto = require('crypto');
+const transporter = nodemailer.createTransport(sgTransport({
+    auth:{
+        api_key: process.env.EMAIL || config.email,
+    }
+}));
+>>>>>>> 8fbd8fea18fae3db536e35ff1c08230b0bd9679f
 
 const service  = new UserService()
 
@@ -66,6 +78,15 @@ exports.postSignup  = async (req,res,next)=>{
 
         // to create the new user
         await service.create(req.body)
+        await transporter.sendMail({
+            to: req.body.email,
+     from: 'myjournalexperiences@gmail.com',
+     subject:'Signup Suceeded',
+     html: `<h1> You successfully signed up</h1>
+            <p> UserName: ${req.body.userName}</p>
+            <p> ${req.body.email}</p>
+            `,
+    })
         res.redirect('/')
     } catch (error) {
         return next(new boom.badRequest(error))

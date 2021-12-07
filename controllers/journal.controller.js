@@ -22,6 +22,23 @@ exports.getFeed  = async (req,res,next)=>{
     }
    
 }
+exports.getUserName  = async (req,res,next)=>{
+
+    try{
+        const { id } = req.params
+
+        const sheets =  await registerService.find(id)
+        res.render('journal/feed-user',{
+            path: '/Feed',
+            pageTitle: 'Feed',
+            sheets: sheets
+            
+        })
+    }catch{
+
+    }
+   
+}
 
 
 exports.getProfile  = (req,res,next)=>{
