@@ -1,5 +1,6 @@
 const UserService = require('../services/user.service');
-const boom = require('@hapi/boom')
+const boom = require('@hapi/boom');
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
 var config = require('./../config/config');
@@ -11,7 +12,7 @@ const transporter = nodemailer.createTransport(sgTransport({
     }
 }));
 
-const service  = new UserService()
+const userService  = new UserService()
 
 exports.getLogin  = (req,res,next)=>{
     res.render('auth/login',{
@@ -25,7 +26,7 @@ exports.postLogin  = async (req,res,next)=>{
     const { password , email} = req.body 
     try{
         // to verify is the account exist if not  notify a error
-        const user = await service.findOne(email )
+        const user = await userService.findOne(email )
         if(!user){throw new Error("Invalid Email")}
 
         // verify is a password is valid
@@ -73,7 +74,9 @@ exports.postSignup  = async (req,res,next)=>{
         if(user){ throw new Error("E-mail exists already, please pick a different one")  }
 
         // to create the new user
-        await service.create(req.body)
+        await userService.create(req.body)
+
+        // to  send a email to the new user
         await transporter.sendMail({
             to: req.body.email,
      from: 'myjournalexperiences@gmail.com',
@@ -83,6 +86,7 @@ exports.postSignup  = async (req,res,next)=>{
             <p> ${req.body.email}</p>
             `,
     })
+    //  to redirect to the login page
         res.redirect('/')
     } catch (error) {
         return next(new boom.badRequest(error))
@@ -97,6 +101,38 @@ exports.getEditProfile  = (req,res,next)=>{
        // errorMessage : null ,
         //oldInput:null,
     })
+}
+exports.getReset = (req,res,next)=>{
+    res.render('auth/reset',{
+        pageTitle: 'Reset Password',
+        errorMessage : null ,
+
+
+    })
+}
+exports.postReset = async (req,res,next)=>{
+    try{
+
+        crypto.randomBytes(32, async (err, buffer)=>{
+            if (err){
+                return res.redirect('/reset')
+            }
+            const resetToken=  buffer.toString('hex')
+            const user = await userService.findOne(req.body.email )
+            if(!user){
+                return res.redirect('/reset')
+                //throw new Error("Invalid Email")
+            }
+            const resetTokenExpiration =   Date.now() + 360000
+            user.resetToken = resetToken
+            user.resetTokenExpiration =  resetTokenExpiration
+            await  userService.update(user)
+            res.redirect('/')
+        })
+    }catch(e){
+        consolelog(e)
+
+    }
 }
 // exports.postEditProfile  = (req,res,next)=>{
 //     res.render('auth/edit-profile',{

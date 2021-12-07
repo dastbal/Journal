@@ -9,18 +9,19 @@ const validatorHandler = require(`../middlewares/validator.handler`)
 router.get('/',
     authController.getLogin
     )
+    .post('/',
+        validatorHandler(loginUserSchema, 'body','login'),
+        authController.postLogin
+        )
 router.post('/logout',
     authController.postLogout
-    )
-router.post('/',
-    validatorHandler(loginUserSchema, 'body','login'),
-    authController.postLogin
     )
 router.get('/signup',
     authController.getSignup
     )
-
-router.post('/signup',
+    
+    
+    .post('/signup',
     validatorHandler(createUserSchema, 'body','signup'),
     authController.postSignup
     )
@@ -29,5 +30,11 @@ router.get('/edit-profile',
     
     )
 
+router.get('/reset',
+    authController.getReset
+    )
+router.post('/reset',
+    authController.postReset
+    )
 
 module.exports = router;
