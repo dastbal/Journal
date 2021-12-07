@@ -7,6 +7,7 @@ const config = {
   dbPassword : process.env.DB_PASSWORD,
   sessionSecret : process.env.SESSION_SECRET,
   dbName : process.env.DB_NAME ,
+  email : process.env.EMAIL ,
 }
 module.exports = config
 

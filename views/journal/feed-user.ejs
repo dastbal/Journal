@@ -10,9 +10,7 @@
         <%- include('../includes/title.ejs') %>
         <div class="user-head feed" >
             <div class="user-img">
-                <img src="<% if (sheets[0].user.imageUrl) { %>
-                    <%= sheets[0].user.imageUrl %> 
-                    <% } else { %>https://picsum.photos/500<% } %>"  alt="">
+                <img src="<%= sheets[0].user.imageUrl %>"  alt="">
 
             </div>
             <div class="user-title">

@@ -14,10 +14,7 @@
             <div class="user">
                 <a class="user-head" href="/journal/feed/<%= user._id %>">
                     <div class="user-img">
-                        <img src="<% if (user.imageUrl) { %>
-                            <%= user.imageUrl %> 
-                            <% } else { %>https://picsum.photos/500<% } %>"  alt="profile">
-5
+                        <img src="<%= user.imageUrl %>"   alt="profile">
                     </div>
                     <div class="user-title">
                         <h2><%= user.userName %> </h2>
