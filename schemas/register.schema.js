@@ -10,6 +10,8 @@ const sadExp = Joi.string("")
 const place = Joi.string("")
 const toShare = Joi.string("")
 const lessonLearned = Joi.string("")
+const _csrf = Joi.allow().required()
+
 
 
 const createRegisterSchema = Joi.object({
@@ -22,6 +24,8 @@ const createRegisterSchema = Joi.object({
     place: place.required(),
     toShare: toShare,
     lessonLearned: lessonLearned,
+    _csrf: _csrf
+
     
 })
 
@@ -35,6 +39,8 @@ const updateRegisterSchema = Joi.object({
     place: place,
     toShare: toShare,
     lessonLearned: lessonLearned,
+    _csrf: _csrf
+
     
 })
 

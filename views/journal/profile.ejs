@@ -27,6 +27,7 @@
                     <a href="/edit-profile">Edit</a>    
                 </div>
                 <form class="form-control centered" action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrf %>">
                     <button  type="submit" class="btn logout">  Logout</button>
             </form>
  

@@ -34,6 +34,18 @@ class UserService {
             next(new boom.serverUnavailable('Please try more late.'))
         }
     }
+    async updatePassword(user , newPassword) {
+        try{
+            const password =  await bcrypt.hash(newPassword, 12)
+            user.password = password;
+            user.resetToken = undefined;
+            user.resetTokenExpiration =  undefined;
+            await user.save()           
+            
+        }catch(e){
+            next(new boom.serverUnavailable('Please try more late.'))
+        }
+    }
 
     async save(user) {
         try{
@@ -47,6 +59,16 @@ class UserService {
   
     async findOne(email ) {
         const user =  await User.findOne({email:email} )
+        
+        return user
+    }
+    async findOneByToken(Token ) {
+        const user =  await User.findOne({resetToken : Token , resetTokenExpiration :{ $gt : Date.now()}} )
+        
+        return user
+    }
+    async findOneByTokenAndId(Token , id ) {
+        const user =  await User.findOne({resetToken : Token , resetTokenExpiration :{ $gt : Date.now()} , _id : id} )
         
         return user
     }

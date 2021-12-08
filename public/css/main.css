@@ -20,6 +20,9 @@
 main{
 	padding-bottom: 5rem;
 }
+button{
+    cursor: pointer;
+}
 body{
     background-color: var(--color-background-white);
     width: 100%;

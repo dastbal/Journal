@@ -73,6 +73,8 @@
             </div>
 
             <button class="btn" type="submit"> Create Sheet</button>
+            <input type="hidden" name="_csrf" value="<%= csrf %>">
+
         </form>
     </main>
     <%- include('../includes/navigation.ejs') %>
