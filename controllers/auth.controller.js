@@ -93,11 +93,13 @@ exports.postSignup  = async (req,res,next)=>{
     }
     
 }
-exports.getEditProfile  = (req,res,next)=>{
+exports.getEditProfile  = async (req,res,next)=>{
+    let user = await userService.findById(req.session.user._id)
+
     res.render('auth/edit-profile',{
         path: '/edit-profile',
         pageTitle: 'Edit Profile',
-        user : req.session.user,
+        user : user,
        // errorMessage : null ,
         //oldInput:null,
     })
@@ -127,19 +129,37 @@ exports.postReset = async (req,res,next)=>{
             user.resetToken = resetToken
             user.resetTokenExpiration =  resetTokenExpiration
             await  userService.update(user)
+            await transporter.sendMail({
+                to: req.body.email,
+         from: 'myjournalexperiences@gmail.com',
+         subject:'Reset Password',
+         html: `
+         <p>  You requested a password reset</p>
+         <p> Click this <a href=""> link </a>to set a new password <p> 
+                `,
+        })
             res.redirect('/')
         })
     }catch(e){
         consolelog(e)
-
+        
     }
 }
-// exports.postEditProfile  = (req,res,next)=>{
-//     res.render('auth/edit-profile',{
-//         path: '/edit-profile',
-//         pageTitle: 'Edit Profile',
-//         user : req.session.user,
-//         // errorMessage : null ,
-//         //oldInput:null,
-//     })
-// }}
+exports.postEditProfile  = async (req,res,next)=>{
+    try{
+
+        let user = await userService.findById(req.session.user._id)
+        // to obtain a valid path  to window
+        user.imageUrl = req.file.path.replace(/\\/gi,'/')
+        user.aboutMe = req.body.aboutMe
+        await userService.update(user)
+        res.redirect('journal/profile')
+    }catch(e){
+        console.log(e)
+    }
+
+    
+     
+
+
+ }

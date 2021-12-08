@@ -28,7 +28,15 @@ class UserService {
 
     async update(user) {
         try{
-            console.log(user)
+            await user.save()           
+            
+        }catch(e){
+            next(new boom.serverUnavailable('Please try more late.'))
+        }
+    }
+
+    async save(user) {
+        try{
             await user.save()           
             
         }catch(e){

@@ -6,8 +6,8 @@ const cors = require('cors')
 const session = require('express-session')
 const multer = require('multer')
 const MongoStore = require('connect-mongo')
-//const helmet = require('helmet')
-//const compression = require('compression')
+const helmet = require('helmet')
+const compression = require('compression')
 const config =require('./config/config')
 //const csrf = require('csurf')()
 
@@ -41,10 +41,9 @@ const fileStorage = multer.diskStorage({
     cb(null, 'images');
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + '-' + file.originalname);
+    cb(null,  Date.now() + file.originalname);
   }
 });
-
 const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === 'image/png' ||
@@ -57,22 +56,9 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(
-  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
+app.use(  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 );
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -83,8 +69,8 @@ app.set('views','views');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
-//app.use(helmet())
-//app.use(compression())
+app.use(helmet())
+app.use(compression())
 //app.use(morgan('combined'))
 
 

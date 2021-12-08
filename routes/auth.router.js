@@ -29,6 +29,10 @@ router.get('/edit-profile',
     authController.getEditProfile
     
     )
+router.post('/edit-profile',
+    authController.postEditProfile
+    
+    )
 
 router.get('/reset',
     authController.getReset
