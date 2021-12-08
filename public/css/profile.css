@@ -23,6 +23,14 @@ form{
     align-items: center;
 
 }
+.user {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+    object-fit: cover;
+  }
 textarea{
 
     width: 100%;
