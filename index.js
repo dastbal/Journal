@@ -4,17 +4,20 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const session = require('express-session')
+var cookieParser = require('cookie-parser')
 const multer = require('multer')
 const MongoStore = require('connect-mongo')
 //const helmet = require('helmet')
 //const compression = require('compression')
 const config =require('./config/config')
-//const csrf = require('csurf')()
+const csrf = require('csurf')
 
 const { connectMongoDB, MONGODB_URL } = require('./libs/mongo')
 const routerJournal = require('./routes')
 const port = process.env.PORT || 3000;
 const { errorHandler , boomErrorHandler , logErrors} = require('./middlewares/error.handler')
+app.use(cookieParser())
+
 
 //           ---------------------------------  cors       ---------------------------------
 
@@ -63,12 +66,16 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 
-//app.use(csrf())
 app.set('view engine', 'ejs');
 app.set('views','views');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
+const csrfProtection = csrf({ cookie: true })
+app.use(csrfProtection)
+
+
+
 //app.use(helmet())
 //app.use(compression())
 
@@ -77,7 +84,7 @@ app.use(express.static(path.join(__dirname,"public")));
 //                    ------------------------ global variables  ---------------------------------
 app.use( (req,res,next)=>{
   res.locals.isLoggedIn = req.session.isLoggedIn;
-  //res.locals.cs =   req.csrfToken()
+  res.locals.csrf =   req.csrfToken()
   res.locals.userName =  req.session.userName
   next()
 })

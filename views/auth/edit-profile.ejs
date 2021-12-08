@@ -25,6 +25,8 @@
                             <textarea name="aboutMe" id="aboutMe" onfocus="this.value=''; setbg('#e5fff3');"
                                 onblur="setbg('white')"><%= user.aboutMe %></textarea> </label>
                     </div>
+                    <input type="hidden" name="_csrf" value="<%= csrf %>">
+
                 <button class="btn" type="submit"> Edit Profile</button>
         </form>
     </main>

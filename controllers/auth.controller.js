@@ -135,19 +135,46 @@ exports.postReset = async (req,res,next)=>{
          subject:'Reset Password',
          html: `
          <p>  You requested a password reset</p>
-         <p> Click this <a href=""> link </a>to set a new password <p> 
-                `,
+         <p> Click this <a href="http://localhost:3000/reset/${resetToken}"> link </a>to set a new password <p> 
+         `,
         })
-            res.redirect('/')
+        res.redirect('/')
         })
     }catch(e){
         consolelog(e)
         
     }
 }
-exports.postEditProfile  = async (req,res,next)=>{
-    try{
+exports.getNewPassword =  async (req,res,next)=>{
+    const token = req.params.token
+    const user = await userService.findOneByToken(token);
 
+    res.render('auth/new-password',{
+        pageTitle: 'New Passwoprd',
+        errorMessage : null ,
+        id : user._id.toString(),
+        passwordToken: token
+
+
+    })
+}
+exports.postNewPassword =  async (req,res,next)=>{
+    const newPassword = req.body.password
+    const userId = req.body.id
+    const passwordToken = req.body.passwordToken
+    const user = await  userService.findOneByTokenAndId(passwordToken, userId)
+    await userService.updatePassword(user,newPassword)
+    res.redirect('/')
+
+
+
+
+}
+exports.postEditProfile  = async (req,res,next)=>{
+    try{ 
+        const password = req.body.password
+        const passwordToken = req.body.passwordToken
+        
         let user = await userService.findById(req.session.user._id)
         // to obtain a valid path  to window
         user.imageUrl = req.file.path.replace(/\\/gi,'/')
