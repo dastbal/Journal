@@ -6,8 +6,8 @@ const cors = require('cors')
 const session = require('express-session')
 const multer = require('multer')
 const MongoStore = require('connect-mongo')
-const helmet = require('helmet')
-const compression = require('compression')
+//const helmet = require('helmet')
+//const compression = require('compression')
 const config =require('./config/config')
 //const csrf = require('csurf')()
 
@@ -69,9 +69,8 @@ app.set('views','views');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
-app.use(helmet())
-app.use(compression())
-//app.use(morgan('combined'))
+//app.use(helmet())
+//app.use(compression())
 
 
 

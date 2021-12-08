@@ -1,8 +1,13 @@
 const RegisterService = require('../services/register.service');
+const UserService = require('../services/user.service');
+const userService  = new UserService()
+
 
 const registerService = new RegisterService()
 exports.getHome  =  async (req,res,next)=>{
-    const sheets = await registerService.find(req.session.user);
+    let user = await userService.findById(req.session.user._id)
+
+    const sheets = await registerService.find(user);
     const count = await registerService.countSheets(req.session.user);
     req.session.sheets = sheets;
 
