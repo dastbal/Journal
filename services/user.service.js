@@ -15,7 +15,7 @@ class UserService {
 
             const password =  await bcrypt.hash(data.password, 12)
             const confirmPassword =  await bcrypt.hash(data.confirmPassword, 12)
-            const imageUrl =  "/images/blank-profile-picture.png"
+            const imageUrl =  "images/blank-profile-picture.png"
             const dataUpdated = {...data, password, confirmPassword , imageUrl}
             //console.log(dataUpdated)
             const user = new User( dataUpdated)
