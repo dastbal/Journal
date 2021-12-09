@@ -66,6 +66,7 @@ exports.getSignup  = (req,res,next)=>{
         oldInput:null,
     })
 }
+
 exports.postSignup  = async (req,res,next)=>{
     
     try {
