@@ -6,9 +6,8 @@ const registerSchema = new Schema({
         type :String,
     },
     date: {
-        type :Date,
-        default :Date.now,
-    },
+        type :String,
+        },
     place: {
         type :String,
         required: true,

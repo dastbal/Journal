@@ -3,14 +3,24 @@ const RegisterService = require('../services/register.service');
 const registerService = new RegisterService()
 
 exports.getRegister = (req,res,next)=>{
-    console.log('i am in register')
     res.render('register/sheets',{
         path: '/',
         pageTitle: 'Register',
+        oldSheet:null,
+    })
+}
+exports.getEditRegister = async (req,res,next)=>{
+    const sheetId   = req.params.sheetId
+    const sheet = await registerService.findById(sheetId)
+    console.log(sheet)
+    res.render('register/sheets',{
+        path: '/',
+        pageTitle: 'Register',
+        oldSheet:sheet,
+
     })
 }
 exports.postCreateSheet = async (req,res,next)=>{
-    console.log(req.body)
     
     try {
         

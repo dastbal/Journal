@@ -10,7 +10,9 @@ class RegisterService {
     async create(data,user) {
         try{
             // adding the user to the object
-            const dataUpdated = {...data, user}
+            const date =  data.date.toString()
+            console.log(date)
+            const dataUpdated = {...data, user ,date}
             const sheet = new Register( dataUpdated)
             await sheet.save();
         }catch(e){
@@ -30,6 +32,13 @@ class RegisterService {
         
         
         return count
+
+    }
+    async findById(id){
+        let sheet  =  await Register.findById(id)
+        
+        
+        return sheet
 
     }
   
