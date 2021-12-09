@@ -41,9 +41,9 @@ exports.getUserName  = async (req,res,next)=>{
 }
 
 
-exports.getProfile  = (req,res,next)=>{
+exports.getProfile  = async (req,res,next)=>{
 
-    const user = req.session.user;
+    const user = await userService.findById(req.session.user._id)  ;
     res.render('journal/profile',{
         path:'/profile',
         pageTitle:'Profile',
