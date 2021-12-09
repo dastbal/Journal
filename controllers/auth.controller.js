@@ -70,7 +70,7 @@ exports.postSignup  = async (req,res,next)=>{
     
     try {
         // to verify if exist the email
-        const user = await service.findOne(req.body.email )
+        const user = await userService.findOne(req.body.email )
         if(user){ throw new Error("E-mail exists already, please pick a different one")  }
 
         // to create the new user
