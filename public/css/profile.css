@@ -6,6 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
 
+main{
+    padding:0 1% 1% 1%;
+    margin-bottom: 8rem;
+}
 :root{
     --color-btn-blue : #053CFF;
     --color-filer-icon : #000000;
@@ -34,10 +38,10 @@ form{
 
 }
 .profile-pic{
-    padding-bottom: 2%;
-    padding-top: 2%;
-    width: 250px;
-    height: 250px;
+    padding-bottom: 1%;
+    padding-top: 0.5%;
+    width: 230px;
+    height: 230px;
     border-radius: 50%;
 
     object-fit: cover;
@@ -48,22 +52,27 @@ form{
 
 }
 .p-email{
-    padding-top: 3%;
+    padding-top: 1.5%;
     font-family: 'Nova Flat', cursive;
-    font-size: 25px;
-    border-radius: 22px;
+    font-size: 20px;
+    border-radius: 18px;
     border-style: solid;
-    border-width: 2px 10px 4px 20px;
+    border-width: 2px 8px 4px 15px;
 }
 .p-info{
     font-family: 'Eagle Lake', cursive;
     border: 1px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     border-style:solid;
     border-color:grey;
     border-radius: 5px;
 }
 .p-info-title{
-    padding-top:3% ;
+    border-spacing: 2px;
+    padding-top:2% ;
     padding-bottom: 3.5%;
     font-family: 'Eagle Lake', cursive;
     text-decoration: underline;
@@ -140,7 +149,7 @@ label{
 .editt{
     padding-top: 3%;
     padding-bottom: 2%;
-    font-size: 20px;
+    font-size: 23px;
     color:#1F67F1;
     display: block;
     text-align: center;
