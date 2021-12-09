@@ -16,7 +16,7 @@
             <div class="form-control">
                 <h2>Title</h2>
                 <label for="title">
-                    <input type="title" required name="title" id="title" placeholder="A great day" value="">
+                    <input type="title" required name="title" id="title" placeholder="A great day" value="<% if (oldSheet) { %><%= oldSheet.title %><% } %>">
                 </label>
             </div>
             <div class="form-control">
@@ -27,48 +27,48 @@
             <div class="form-control">
                 <h2>Place</h2>
                 <label for="place">
-                    <input type="place" required name="place" id="place" placeholder="Rexburg, Idaho" value="">
+                    <input type="place" required name="place" id="place" placeholder="Rexburg, Idaho" value="<% if (oldSheet) { %><%= oldSheet.place %><% } %>">
                 </label>
             </div>
             <div class="form-control">
                 <h2>How was your day?</h2>
                 <label for="yourDay">
                     <textarea name="yourDay" id="yourDay" onfocus="this.value=''; setbg('#e5fff3');"
-                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."></textarea>
+                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."> <% if (oldSheet) { %> <%= oldSheet.yourDay %> <% } %></textarea>
                 </label>
             </div>
             <div class="form-control">
                 <h2>Happy experiences</h2>
                 <label for="happyExp">
                     <textarea name="happyExp" id="happyExp" onfocus="this.value=''; setbg('#e5fff3');"
-                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."></textarea> </label>
+                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."> <% if (oldSheet) { %> <%= oldSheet.happyExp %> <% } %></textarea> </label>
             </div>
             <div class="form-control">
                 <h2>Spiritual experiences</h2>
                 <label for="spiritExp">
                     <textarea name="spiritExp" id="spiritExp" onfocus="this.value=''; setbg('#e5fff3');"
-                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."></textarea>
+                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."> <% if (oldSheet) { %> <%= oldSheet.spiritExp %> <% } %></textarea>
                 </label>
             </div>
             <div class="form-control">
                 <h2>To share with others</h2>
                 <label for="toShare">
                     <textarea name="toShare" id="toShare" onfocus="this.value=''; setbg('#e5fff3');"
-                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."></textarea>
+                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."> <% if (oldSheet) { %> <%= oldSheet.toShare %> <% } %></textarea>
                 </label> 
             </div>
             <div class="form-control">
                 <h2>Sad Experiences</h2>
                 <label for="sadExp">
                     <textarea name="sadExp" id="sadExp" onfocus="this.value=''; setbg('#e5fff3');"
-                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."></textarea>
+                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."><% if (oldSheet) { %> <%= oldSheet.sadExp %> <% } %></textarea>
                 </label>
             </div>
             <div class="form-control">
                 <h2>Lessons Learned</h2>
                 <label for="lessonLearned">
                     <textarea name="lessonLearned" id="lessonLearned" onfocus="this.value=''; setbg('#e5fff3');"
-                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."></textarea>
+                        onblur="setbg('white')"  placeholder="Enter your thoughts here.."><% if (oldSheet) { %> <%= oldSheet.lessonLearned %> <% } %></textarea>
                 </label>
             </div>
 

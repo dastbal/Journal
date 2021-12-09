@@ -23,9 +23,9 @@
                         <div class="journal-info">
                             
                             <span class="place"><%= sheet.place %></span>
-                            <span>   -   </span>
+                            <span style="margin: 0 4px;">      -       </span>
                         
-                            <span class="date"> 25 April</span>
+                            <span class="date"><%= sheet.date %></span>
                     </div>
                 </div>
                 <div class="journal-topic">
@@ -40,6 +40,7 @@
                     <h4>Sad</h4>
                     <p>
                         <%= sheet.sadExp %>
+
                     </p>
                 </div>
                 <div class="journal-topic">
@@ -65,7 +66,7 @@
                 </div>
                 
                 <div class="action centered">
-                    <a class="btn-a " href="/journal/register"> Edit</a>
+                    <a class="btn-a " href="/journal/register/<%= sheet._id.toString() %> "> Edit</a>
                 </div>
                 
             </div>

@@ -8,6 +8,10 @@ const registerController = require('../controllers/register.controller');
 router.get('/',
     registerController.getRegister
     )
+router.get('/:sheetId',
+    registerController.getEditRegister
+    )
+
 
 router.post('/create-sheet',
     registerController.postCreateSheet
