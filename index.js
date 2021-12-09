@@ -88,8 +88,9 @@ app.use( (req,res,next)=>{
   res.locals.userName =  req.session.userName
   next()
 })
-
-
+app.use((error, req, res, next) => {
+    res.redirect('/500');
+});
 
 
 

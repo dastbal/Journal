@@ -135,7 +135,7 @@ exports.postReset = async (req,res,next)=>{
          subject:'Reset Password',
          html: `
          <p>  You requested a password reset</p>
-         <p> Click this <a href="http://localhost:3000/reset/${resetToken}"> link </a>to set a new password <p> 
+         <p> Click this <a href="https://still-brushlands-88997.herokuapp.com/reset/${resetToken}"> link </a>to set a new password <p> 
          `,
         })
         res.redirect('/')
@@ -185,8 +185,8 @@ exports.postEditProfile  = async (req,res,next)=>{
         console.log(e)
     }
 
-    
-     
-
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
 
  }
